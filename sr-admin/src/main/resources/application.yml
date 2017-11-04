@@ -1,2 +1,13 @@
 server:
   port: 8081
+spring:
+  datasource:
+    driver-class-name: com.mysql.jdbc.Driver
+    username: root
+    password: 837769723
+    url: jdbc:mysql://localhost/sr?characterEncoding=utf-8&useSSL=false
+  jpa:
+    show-sql: true
+  redis:
+    host: 127.0.0.1
+    port: 6379
