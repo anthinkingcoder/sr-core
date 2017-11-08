@@ -29,7 +29,7 @@ public class KnowledgeRepositoryTest {
 
     @Test
     public void findAllByDeleteAtIsNull() throws Exception {
-        Page<Knowledge> page = repository.findAllByAndLevelAndDeleteAtIsNull(new PageRequest(0,20),0);
+        Page<Knowledge> page = repository.findAllByLevelAndDeleteAtIsNull(new PageRequest(0,20),0);
         Assert.assertNotEquals(page.getSize(),0);
     }
 

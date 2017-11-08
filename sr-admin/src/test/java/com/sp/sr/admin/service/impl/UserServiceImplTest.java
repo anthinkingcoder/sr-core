@@ -30,6 +30,7 @@ public class UserServiceImplTest {
         User user = new User();
         user.setId(1L);
         user.setUsername("admin");
+        user.setLevel(1);
         String salt = Hashes.sha1(String.valueOf(new Random(System.currentTimeMillis()).nextInt(1000000)));
         user.setSalt(salt);
         String password = Hashes.md5(Hashes.sha1("admin") + salt);

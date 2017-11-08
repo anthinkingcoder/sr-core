@@ -11,10 +11,9 @@ import java.util.Date;
 /**
  * @author zhoulin
  */
-@Entity(name = "core_knowledge")
+@Entity(name = "core_resource")
 @Data
-public class Knowledge{
-
+public class Resource {
     @Id
     @GeneratedValue
     public Long id;
@@ -23,16 +22,16 @@ public class Knowledge{
     public Date updateAt;
     @JsonIgnore
     private Date deleteAt;
+    private Integer category;
+    private String coverUrl;
+    private String url;
     private String name;
-    private Integer sort;
-    private Long parentId;
-    private Integer level;
+    private String summary;
     private Long uploaderId;
-    private Long topicId;
-    private Long resourceDocumentId;
 
-    public Knowledge() {
+    public Resource() {
         createAt = new Date();
         updateAt = new Date();
+
     }
 }

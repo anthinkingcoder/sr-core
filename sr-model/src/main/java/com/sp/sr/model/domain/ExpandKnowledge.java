@@ -8,12 +8,9 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import java.util.Date;
 
-/**
- * @author zhoulin
- */
-@Entity(name = "core_knowledge")
+@Entity(name = "core_expand_knowledge")
 @Data
-public class Knowledge{
+public class ExpandKnowledge {
 
     @Id
     @GeneratedValue
@@ -24,14 +21,12 @@ public class Knowledge{
     @JsonIgnore
     private Date deleteAt;
     private String name;
-    private Integer sort;
-    private Long parentId;
-    private Integer level;
+    private String summary;
+    private String coverUrl;
+    private String url;
     private Long uploaderId;
-    private Long topicId;
-    private Long resourceDocumentId;
 
-    public Knowledge() {
+    public ExpandKnowledge() {
         createAt = new Date();
         updateAt = new Date();
     }

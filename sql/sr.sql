@@ -4,7 +4,7 @@
 # `update_at` DATETIME NOT NULL,
 # `delete_at` DATETIME        DEFAULT NULL,
 # PRIMARY KEY (id)
-#简单起见 1.一个用户只有一个角色 默认账号admin为系统管理员 2.类别都写死,不用自定义
+#
 
 DROP TABLE IF EXISTS `core_user`;
 CREATE TABLE core_user (
@@ -18,8 +18,9 @@ CREATE TABLE core_user (
   `salt`            VARCHAR(255) NOT NULL,
   `last_login_time` DATETIME         DEFAULT NULL
   COMMENT '上次登录时间',
-  `role_id`         BIGINT UNSIGNED  DEFAULT NULL,
-  `level`           TINYINT UNSIGNED DEFAULT 0,
+  `level`           TINYINT UNSIGNED DEFAULT 0
+  COMMENT '1.超级管理员 2.教师 3.学生',
+  `status`          TINYINT UNSIGNED DEFAULT 0,
   PRIMARY KEY (id),
   UNIQUE KEY (username)
 )
@@ -27,58 +28,6 @@ CREATE TABLE core_user (
   DEFAULT CHARSET = utf8
   COMMENT ='用户表';
 
-DROP TABLE IF EXISTS `core_role`;
-CREATE TABLE core_role (
-  `id`        BIGINT UNSIGNED AUTO_INCREMENT,
-  `create_at` DATETIME    NOT NULL,
-  `update_at` DATETIME    NOT NULL,
-  `delete_at` DATETIME        DEFAULT NULL,
-  `name`      VARCHAR(30) NOT NULL,
-  `summary`   VARCHAR(255)    DEFAULT NULL,
-  PRIMARY KEY (id)
-
-)
-  ENGINE = InnoDB
-  DEFAULT CHARSET = utf8
-  COMMENT ='角色表';
-
-DROP TABLE IF EXISTS `core_permission`;
-CREATE TABLE core_permission (
-  `id`        BIGINT UNSIGNED  AUTO_INCREMENT,
-  `create_at` DATETIME     NOT NULL,
-  `update_at` DATETIME     NOT NULL,
-  `delete_at` DATETIME         DEFAULT NULL,
-  `name`      VARCHAR(255) NOT NULL,
-  `summary`   VARCHAR(255)     DEFAULT NULL,
-  `rest_url`  VARCHAR(255)     DEFAULT NULL
-  COMMENT '数据url',
-  `page_url`  VARCHAR(255)     DEFAULT NULL
-  COMMENT '页面url',
-  `parent_id` BIGINT UNSIGNED  DEFAULT NULL,
-  `depth`     INT UNSIGNED     DEFAULT 0,
-  `path`      INT UNSIGNED     DEFAULT NULL
-  COMMENT '权限路径',
-  `category`  TINYINT UNSIGNED DEFAULT NULL DEFAULT 0
-  COMMENT '权限类型 0.菜单 1.按钮',
-  PRIMARY KEY (id)
-)
-  ENGINE = InnoDB
-  DEFAULT CHARSET = utf8
-  COMMENT ='权限表';
-
-DROP TABLE IF EXISTS `core_role_permission`;
-CREATE TABLE core_role_permission (
-  `id`            BIGINT UNSIGNED AUTO_INCREMENT,
-  `create_at`     DATETIME        NOT NULL,
-  `update_at`     DATETIME        NOT NULL,
-  `delete_at`     DATETIME        DEFAULT NULL,
-  `role_id`       BIGINT UNSIGNED NOT NULL,
-  `permission_id` BIGINT UNSIGNED NOT NULL,
-  PRIMARY KEY (id)
-)
-  ENGINE = InnoDB
-  DEFAULT CHARSET = utf8
-  COMMENT ='角色权限中间表';
 
 DROP TABLE IF EXISTS `core_knowledge`;
 CREATE TABLE core_knowledge (
@@ -86,17 +35,17 @@ CREATE TABLE core_knowledge (
   `create_at`            DATETIME               NOT NULL,
   `update_at`            DATETIME               NOT NULL,
   `delete_at`            DATETIME                                       DEFAULT NULL,
-  `name`                 VARCHAR(255)                                   DEFAULT  NULL
+  `name`                 VARCHAR(255)                                   DEFAULT NULL
   COMMENT '知识点名称',
   `sort`                 INT UNSIGNED DEFAULT 0 NOT NULL
   COMMENT '排序',
   `level`                TINYINT UNSIGNED COMMENT '类别 1.基础知识点  2.进阶知识点' DEFAULT 1,
-  `parent_id`            BIGINT UNSIGNED DEFAULT NULL,
+  `parent_id`            BIGINT UNSIGNED                                DEFAULT NULL,
   `uploader_id`          BIGINT UNSIGNED        NOT NULL
   COMMENT '上传者编号',
   `topic_id`             BIGINT UNSIGNED                                DEFAULT NULL
   COMMENT '所属专题编号',
-  `resource_document_id` BIGINT UNSIGNED        NOT NULL
+  `resource_document_id` BIGINT UNSIGNED                                DEFAULT NULL
   COMMENT '知识点文档',
   PRIMARY KEY (id)
 )
@@ -143,27 +92,38 @@ CREATE TABLE core_topic (
   DEFAULT CHARSET = utf8
   COMMENT ='专题表';
 
+DROP TABLE IF EXISTS `core_example_detail`;
+CREATE TABLE core_example_detail (
+  `id`             BIGINT UNSIGNED AUTO_INCREMENT,
+  `create_at`      DATETIME NOT NULL,
+  `update_at`      DATETIME NOT NULL,
+  `delete_at`      DATETIME        DEFAULT NULL,
+  `content`        TEXT     NOT NULL
+  COMMENT '实例内容',
+  `explain`        TEXT            DEFAULT NULL
+  COMMENT '实例讲解',
+  `runtime_result` TEXT            DEFAULT NULL
+  COMMENT '运行结果'
+)
+  ENGINE = InnoDB
+  DEFAULT CHARSET = utf8
+  COMMENT ='实例教程详情表';
+
 DROP TABLE IF EXISTS `core_example`;
 CREATE TABLE core_example (
-  `id`                  BIGINT UNSIGNED AUTO_INCREMENT,
-  `create_at`           DATETIME        NOT NULL,
-  `update_at`           DATETIME        NOT NULL,
-  `delete_at`           DATETIME        DEFAULT NULL,
-  `title`               VARCHAR(255)    NOT NULL
+  `id`                BIGINT UNSIGNED AUTO_INCREMENT,
+  `create_at`         DATETIME        NOT NULL,
+  `update_at`         DATETIME        NOT NULL,
+  `delete_at`         DATETIME        DEFAULT NULL,
+  `title`             VARCHAR(255)    NOT NULL
   COMMENT '实例标题',
-  `content`             TEXT            NOT NULL
-  COMMENT '实例内容',
-  `explain`             TEXT            DEFAULT NULL
-  COMMENT '实例讲解',
-  `runtime_result`      TEXT            DEFAULT NULL
-  COMMENT '运行结果',
-  `code_attachment_url` VARCHAR(255)    DEFAULT NULL
-  COMMENT '代码附件',
-  `topic_id`            BIGINT UNSIGNED DEFAULT NULL
+  `example_detail_id` BIGINT UNSIGNED NOT NULL
+  COMMENT '实例详情编号',
+  `topic_id`          BIGINT UNSIGNED DEFAULT NULL
   COMMENT '所属专题',
-  `knowledge_id`        BIGINT UNSIGNED DEFAULT NULL
+  `knowledge_id`      BIGINT UNSIGNED DEFAULT NULL
   COMMENT '所属知识点',
-  `uploader_id`         BIGINT UNSIGNED NOT NULL
+  `uploader_id`       BIGINT UNSIGNED NOT NULL
   COMMENT '上传者编号',
   PRIMARY KEY (id)
 )
@@ -221,6 +181,12 @@ CREATE TABLE core_resource (
   `delete_at`   DATETIME        DEFAULT NULL,
   `category`    TINYINT UNSIGNED NOT NULL
   COMMENT '1.电子书 2.优秀网站 3.软件资源',
+  `cover_url`   VARCHAR(255)    DEFAULT NULL
+  COMMENT '封面图',
+  `name`        VARCHAR(255)    DEFAULT NULL
+  COMMENT '名称',
+  `summary`     VARCHAR(255)    DEFAULT NULL
+  COMMENT '摘要',
   `uploader_id` BIGINT UNSIGNED  NOT NULL
   COMMENT '上传者编号',
   PRIMARY KEY (id),
@@ -318,16 +284,85 @@ CREATE TABLE core_student_test_record (
   DEFAULT CHARSET = utf8
   COMMENT ='测试记录表';
 
-# CREATE TABLE 'core_student_work_category' (
+#RBAC0扩展模型 简单起见 弃用
+# DROP TABLE IF EXISTS `core_role`;
+# CREATE TABLE core_role (
 #   `id`        BIGINT UNSIGNED AUTO_INCREMENT,
-#   `create_at` DATETIME     NOT NULL,
-#   `update_at` DATETIME     NOT NULL,
+#   `create_at` DATETIME    NOT NULL,
+#   `update_at` DATETIME    NOT NULL,
 #   `delete_at` DATETIME        DEFAULT NULL,
-#   `name`      VARCHAR(255) NOT NULL
-#   COMMENT '名称',
-#   `summary`   VARCHAR(255)    DEFAULT NULL
-#   COMMENT '摘要'
+#   `name`      VARCHAR(30) NOT NULL,
+#   `summary`   VARCHAR(255)    DEFAULT NULL,
+#   PRIMARY KEY (id)
+#
 # )
 #   ENGINE = InnoDB
 #   DEFAULT CHARSET = utf8
-#   COMMENT ='学生作品类别';
+#   COMMENT ='角色表';
+
+# DROP TABLE IF EXISTS `core_user_role`;
+# CREATE TABLE core_role (
+#   `id`        BIGINT UNSIGNED AUTO_INCREMENT,
+#   `create_at` DATETIME        NOT NULL,
+#   `update_at` DATETIME        NOT NULL,
+#   `delete_at` DATETIME        DEFAULT NULL,
+#   `user_id`   BIGINT UNSIGNED NOT NULL,
+#   `role_id`   BIGINT UNSIGNED NOT NULL,
+#   PRIMARY KEY (id)
+# )
+#   ENGINE = InnoDB
+#   DEFAULT CHARSET = utf8
+#   COMMENT ='用户角色表';
+
+
+# CREATE TABLE core_permission_module (
+#   `id`        BIGINT UNSIGNED           AUTO_INCREMENT,
+#   `create_at` DATETIME         NOT NULL,
+#   `update_at` DATETIME         NOT NULL,
+#   `delete_at` DATETIME                  DEFAULT NULL,
+#   `name`      VARCHAR(255)     NOT NULL,
+#   `parent_id` BIGINT UNSIGNED           DEFAULT NULL,
+#   `depth`                INT UNSIGNED               DEFAULT 0 COMMENT '权限模块深度',
+#   `path`                 INT UNSIGNED               DEFAULT NULL
+#   COMMENT '权限路径',
+#   `status`    TINYINT UNSIGNED NOT NULL DEFAULT 0,
+#   `summary`   VARCHAR(255)              DEFAULT NULL
+# )
+#   ENGINE = InnoDB
+#   DEFAULT CHARSET = utf8
+#   COMMENT ='权限模块';
+
+# DROP TABLE IF EXISTS `core_permission`;
+# CREATE TABLE core_permission (
+#   `id`                   BIGINT UNSIGNED            AUTO_INCREMENT,
+#   `create_at`            DATETIME         NOT NULL,
+#   `update_at`            DATETIME         NOT NULL,
+#   `delete_at`            DATETIME                   DEFAULT NULL,
+#   `name`                 VARCHAR(255)     NOT NULL,
+#   `summary`              VARCHAR(255)               DEFAULT NULL,
+#   `status`               TINYINT UNSIGNED NOT NULL  DEFAULT 0,
+#   `url`                  VARCHAR(255)               DEFAULT NULL
+#   COMMENT '数据url',
+#   `permission_module_id` BIGINT UNSIGNED  NOT NULL
+#   COMMENT '模块',
+#   `category`             TINYINT UNSIGNED           DEFAULT NULL DEFAULT 0
+#   COMMENT '权限类型 0.菜单 1.按钮 2.其他',
+#   PRIMARY KEY (id)
+# )
+#   ENGINE = InnoDB
+#   DEFAULT CHARSET = utf8
+#   COMMENT ='权限表';
+#
+# DROP TABLE IF EXISTS `core_role_permission`;
+# CREATE TABLE core_role_permission (
+#   `id`            BIGINT UNSIGNED AUTO_INCREMENT,
+#   `create_at`     DATETIME        NOT NULL,
+#   `update_at`     DATETIME        NOT NULL,
+#   `delete_at`     DATETIME        DEFAULT NULL,
+#   `role_id`       BIGINT UNSIGNED NOT NULL,
+#   `permission_id` BIGINT UNSIGNED NOT NULL,
+#   PRIMARY KEY (id)
+# )
+#   ENGINE = InnoDB
+#   DEFAULT CHARSET = utf8
+#   COMMENT ='角色权限中间表';

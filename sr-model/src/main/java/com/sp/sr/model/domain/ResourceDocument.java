@@ -8,30 +8,22 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import java.util.Date;
 
-/**
- * @author zhoulin
- */
-@Entity(name = "core_knowledge")
+@Entity(name = "core_resource_document")
 @Data
-public class Knowledge{
-
+public class ResourceDocument {
     @Id
     @GeneratedValue
-    public Long id;
-    public Date createAt;
+    private Long id;
+    private Date createAt;
     @JsonIgnore
-    public Date updateAt;
+    private Date updateAt;
     @JsonIgnore
     private Date deleteAt;
-    private String name;
-    private Integer sort;
-    private Long parentId;
-    private Integer level;
+    private String coverUrl;
+    private String content;
     private Long uploaderId;
-    private Long topicId;
-    private Long resourceDocumentId;
 
-    public Knowledge() {
+    public ResourceDocument() {
         createAt = new Date();
         updateAt = new Date();
     }

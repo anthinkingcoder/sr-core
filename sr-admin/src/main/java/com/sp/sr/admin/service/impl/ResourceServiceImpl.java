@@ -1,0 +1,40 @@
+package com.sp.sr.admin.service.impl;
+
+import com.sp.sr.admin.Auths;
+import com.sp.sr.admin.reponsity.ResourceRepository;
+import com.sp.sr.admin.service.ResourceService;
+import com.sp.sr.model.domain.Resource;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
+import org.springframework.stereotype.Service;
+
+import static com.sp.sr.admin.controller.BaseController.USER;
+
+/**
+ * @author zhoulin
+ */
+@Service
+public class ResourceServiceImpl implements ResourceService {
+
+    @Autowired
+    private ResourceRepository resourceRepository;
+
+    @Override
+    public Page<Resource> findAll(Pageable pageable) {
+        if (Auths.isSystem(USER.get())) {
+            return resourceRepository.findAllByDeleteAtIsNull(pageable);
+        }
+        return resourceRepository.findAllByDeleteAtIsNullAndUploaderId(pageable, USER.get().getId());
+    }
+
+    @Override
+    public Resource findById(Long id) {
+        return resourceRepository.findByIdAndDeleteAtIsNull(id);
+    }
+
+    @Override
+    public Resource save(Resource resource) {
+        return resourceRepository.save(resource);
+    }
+}

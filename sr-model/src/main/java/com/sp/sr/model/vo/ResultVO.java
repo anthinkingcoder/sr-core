@@ -1,4 +1,4 @@
-package com.sp.sr.model.VO;
+package com.sp.sr.model.vo;
 
 import com.sp.sr.model.enums.ResultStatus;
 import lombok.Data;

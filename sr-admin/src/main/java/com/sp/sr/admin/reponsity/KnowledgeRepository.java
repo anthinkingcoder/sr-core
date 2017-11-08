@@ -7,11 +7,29 @@ import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.List;
 
+
 public interface KnowledgeRepository extends JpaRepository<Knowledge, Long> {
-    Page<Knowledge> findByUploaderIdAndLevelAndDeleteAtIsNullOrderBySortDesc(Long uploaderId, Pageable pageable, Integer level);
+    Page<Knowledge> findByUploaderIdAndLevelAndDeleteAtIsNullOrderByCreateAtDesc(Long uploaderId, Pageable pageable, Integer level);
 
-    Page<Knowledge> findAllByDeleteAtIsNullAndLevel(Pageable pageable, Integer level);
+    Page<Knowledge> findAllByLevelAndDeleteAtIsNull(Pageable pageable, Integer level);
 
-    Page<Knowledge> findAllByAndLevelAndDeleteAtIsNull(Pageable pageable, Integer level);
+
+    Knowledge findByIdAndDeleteAtIsNull(Long id);
+
+    Page<Knowledge> findAllByTopicIdAndLevelAndDeleteAtIsNullOrderByCreateAtDesc(Pageable pageable, Long topicId, Integer level);
+
+    List<Knowledge> findAllByTopicIdAndDeleteAtIsNull(Long topicId);
+
+    List<Knowledge> findAllByLevelAndDeleteAtIsNull(Integer level);
+
+
+    Page<Knowledge> findAllByLevelAndUploaderIdAndDeleteAtIsNull(Pageable pageable, Integer level, Long uploaderId);
+
+    Page<Knowledge> findAllByTopicIdAndLevelAndUploaderIdAndDeleteAtIsNullOrderByCreateAtDesc(Pageable pageable, Long topicId, Integer level, Long uploaderId);
+
+    List<Knowledge> findAllByTopicIdAndUploaderIdAndDeleteAtIsNull(Long topicId, Long uploaderId);
+
+    List<Knowledge> findAllByLevelAndUploaderIdAndDeleteAtIsNull(Integer level, Long uploaderId);
+
 
 }

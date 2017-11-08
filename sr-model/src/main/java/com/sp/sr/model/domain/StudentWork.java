@@ -8,13 +8,9 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import java.util.Date;
 
-/**
- * @author zhoulin
- */
-@Entity(name = "core_knowledge")
+@Entity(name = "core_student_work")
 @Data
-public class Knowledge{
-
+public class StudentWork {
     @Id
     @GeneratedValue
     public Long id;
@@ -23,15 +19,14 @@ public class Knowledge{
     public Date updateAt;
     @JsonIgnore
     private Date deleteAt;
-    private String name;
-    private Integer sort;
-    private Long parentId;
-    private Integer level;
+    private String title;
+    private String author;
+    private String summary;
+    private String content;
+    private Integer category;
     private Long uploaderId;
-    private Long topicId;
-    private Long resourceDocumentId;
 
-    public Knowledge() {
+    public StudentWork() {
         createAt = new Date();
         updateAt = new Date();
     }

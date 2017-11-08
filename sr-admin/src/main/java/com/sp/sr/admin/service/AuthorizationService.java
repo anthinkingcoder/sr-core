@@ -18,4 +18,5 @@ public interface AuthorizationService {
      * @return userinfo
      */
     User authorize(String username, String password);
+
 }

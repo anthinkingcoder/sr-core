@@ -11,10 +11,9 @@ import java.util.Date;
 /**
  * @author zhoulin
  */
-@Entity(name = "core_knowledge")
+@Entity(name = "core_attachment")
 @Data
-public class Knowledge{
-
+public class Attachment {
     @Id
     @GeneratedValue
     public Long id;
@@ -24,14 +23,13 @@ public class Knowledge{
     @JsonIgnore
     private Date deleteAt;
     private String name;
+    private Integer moduleCategory;
+    private Long moduleId;
+    private String url;
     private Integer sort;
-    private Long parentId;
-    private Integer level;
     private Long uploaderId;
-    private Long topicId;
-    private Long resourceDocumentId;
 
-    public Knowledge() {
+    public Attachment() {
         createAt = new Date();
         updateAt = new Date();
     }

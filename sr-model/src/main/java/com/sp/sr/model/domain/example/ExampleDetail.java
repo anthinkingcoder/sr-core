@@ -1,7 +1,8 @@
-package com.sp.sr.model.domain;
+package com.sp.sr.model.domain.example;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Data;
+import lombok.extern.slf4j.Slf4j;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -11,10 +12,9 @@ import java.util.Date;
 /**
  * @author zhoulin
  */
-@Entity(name = "core_knowledge")
+@Entity(name = "core_example_detail")
 @Data
-public class Knowledge{
-
+public class ExampleDetail {
     @Id
     @GeneratedValue
     public Long id;
@@ -23,15 +23,11 @@ public class Knowledge{
     public Date updateAt;
     @JsonIgnore
     private Date deleteAt;
-    private String name;
-    private Integer sort;
-    private Long parentId;
-    private Integer level;
-    private Long uploaderId;
-    private Long topicId;
-    private Long resourceDocumentId;
+    private String content;
+    private String exampleExplain;
+    private String runtimeResult;
 
-    public Knowledge() {
+    public ExampleDetail() {
         createAt = new Date();
         updateAt = new Date();
     }
