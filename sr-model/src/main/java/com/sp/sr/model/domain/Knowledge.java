@@ -13,16 +13,7 @@ import java.util.Date;
  */
 @Entity(name = "core_knowledge")
 @Data
-public class Knowledge{
-
-    @Id
-    @GeneratedValue
-    public Long id;
-    public Date createAt;
-    @JsonIgnore
-    public Date updateAt;
-    @JsonIgnore
-    private Date deleteAt;
+public class Knowledge extends BaseEntity{
     private String name;
     private Integer sort;
     private Long parentId;
@@ -31,8 +22,5 @@ public class Knowledge{
     private Long topicId;
     private Long resourceDocumentId;
 
-    public Knowledge() {
-        createAt = new Date();
-        updateAt = new Date();
-    }
+
 }

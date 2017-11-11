@@ -1,16 +1,20 @@
 package com.sp.sr.web.responsity;
 
+import com.sp.sr.model.repository.UserRepository;
 import com.sp.sr.model.domain.User;
+import lombok.extern.slf4j.Slf4j;
 import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
+
 import java.util.Date;
 
 @SpringBootTest
 @RunWith(SpringRunner.class)
+@Slf4j
 public class UserRepositoryTest {
 
     @Autowired
@@ -18,8 +22,10 @@ public class UserRepositoryTest {
 
     @Test
     public void testFindUserByUsername() throws Exception {
-        User user = userRepository.findUserByUsername("admin");
+        User user = userRepository.findUserByUsernameAndDeleteAtIsNull("admin");
         Assert.assertNotNull(user);
+        log.info(user.toString());
+
     }
 
     @Test

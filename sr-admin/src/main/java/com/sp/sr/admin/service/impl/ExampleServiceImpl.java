@@ -2,13 +2,13 @@ package com.sp.sr.admin.service.impl;
 
 import com.sp.sr.admin.Auths;
 import com.sp.sr.admin.SrAdminException;
-import com.sp.sr.admin.reponsity.example.ExampleDetailRepository;
-import com.sp.sr.admin.reponsity.example.ExampleRepository;
-import com.sp.sr.admin.service.ExampleService;
+import com.sp.sr.model.repository.ExampleDetailRepository;
+import com.sp.sr.model.repository.ExampleRepository;
+import com.sp.sr.model.service.ExampleService;
 import com.sp.sr.model.domain.User;
-import com.sp.sr.model.dto.ExampleDTO;
 import com.sp.sr.model.domain.example.Example;
 import com.sp.sr.model.domain.example.ExampleDetail;
+import com.sp.sr.model.dto.ExampleDTO;
 import com.sp.sr.model.enums.ResultStatus;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.BeanUtils;
@@ -17,9 +17,10 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-import static com.sp.sr.admin.controller.BaseController.USER;
 
 import java.util.Date;
+
+import static com.sp.sr.model.controller.BaseController.USER;
 
 
 /**

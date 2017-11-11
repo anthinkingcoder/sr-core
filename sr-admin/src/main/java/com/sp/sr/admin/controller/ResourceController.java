@@ -2,10 +2,11 @@ package com.sp.sr.admin.controller;
 
 import com.sp.sr.admin.Auths;
 import com.sp.sr.admin.SrAdminException;
-import com.sp.sr.admin.service.ResourceService;
+import com.sp.sr.model.controller.BaseController;
 import com.sp.sr.model.domain.Resource;
 import com.sp.sr.model.enums.ResourceCategoryEnum;
 import com.sp.sr.model.enums.ResultStatus;
+import com.sp.sr.model.service.ResourceService;
 import com.sp.sr.model.vo.ResultVO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -22,7 +23,6 @@ import java.util.Date;
 public class ResourceController extends BaseController {
     @Autowired
     private ResourceService resourceService;
-
 
     @RequestMapping("/list")
     @GetMapping

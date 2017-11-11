@@ -1,15 +1,15 @@
 package com.sp.sr.admin.service.impl;
 
 import com.sp.sr.admin.Auths;
-import com.sp.sr.admin.reponsity.StudentWorkRepository;
-import com.sp.sr.admin.service.StudentWorkService;
+import com.sp.sr.model.repository.StudentWorkRepository;
+import com.sp.sr.model.service.StudentWorkService;
 import com.sp.sr.model.domain.StudentWork;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
-import static com.sp.sr.admin.controller.BaseController.USER;
+import static com.sp.sr.model.controller.BaseController.USER;
 
 /**
  * @author zhoulin
@@ -35,5 +35,10 @@ public class StudentWorkServiceImpl implements StudentWorkService {
     @Override
     public StudentWork findOne(Long id) {
         return repository.findOne(id);
+    }
+
+    @Override
+    public Page<StudentWork> findAllByCategory(Pageable pageable, Integer category) {
+        return null;
     }
 }

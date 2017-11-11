@@ -10,24 +10,12 @@ import java.util.Date;
 
 @Entity(name = "core_expand_knowledge")
 @Data
-public class ExpandKnowledge {
+public class ExpandKnowledge extends BaseEntity{
 
-    @Id
-    @GeneratedValue
-    public Long id;
-    public Date createAt;
-    @JsonIgnore
-    public Date updateAt;
-    @JsonIgnore
-    private Date deleteAt;
     private String name;
     private String summary;
     private String coverUrl;
     private String url;
     private Long uploaderId;
 
-    public ExpandKnowledge() {
-        createAt = new Date();
-        updateAt = new Date();
-    }
 }

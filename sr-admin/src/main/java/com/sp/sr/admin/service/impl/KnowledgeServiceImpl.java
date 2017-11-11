@@ -1,17 +1,18 @@
 package com.sp.sr.admin.service.impl;
 
 import com.sp.sr.admin.Auths;
-import com.sp.sr.admin.controller.BaseController;
-import com.sp.sr.admin.reponsity.KnowledgeRepository;
-import com.sp.sr.admin.service.KnowledgeService;
+import com.sp.sr.model.repository.KnowledgeRepository;
+import com.sp.sr.model.service.KnowledgeService;
+import com.sp.sr.model.controller.BaseController;
 import com.sp.sr.model.domain.Knowledge;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
-import static com.sp.sr.admin.controller.BaseController.USER;
 
 import java.util.List;
+
+import static com.sp.sr.model.controller.BaseController.USER;
 
 
 /**
@@ -67,7 +68,7 @@ public class KnowledgeServiceImpl implements KnowledgeService {
     @Override
     public List<Knowledge> findAllByLevel(Integer level) {
         if (Auths.isSystem(BaseController.USER.get())) {
-            return repository.findAllByLevelAndDeleteAtIsNull(level);
+            return repository.findAllByLevelAndDeleteAtIsNullOrderBySortAsc(level);
         }
         return repository.findAllByLevelAndUploaderIdAndDeleteAtIsNull(level, BaseController.USER.get().getId());
     }

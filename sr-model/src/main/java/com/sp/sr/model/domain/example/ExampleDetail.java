@@ -1,6 +1,7 @@
 package com.sp.sr.model.domain.example;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.sp.sr.model.domain.BaseEntity;
 import lombok.Data;
 import lombok.extern.slf4j.Slf4j;
 
@@ -14,21 +15,9 @@ import java.util.Date;
  */
 @Entity(name = "core_example_detail")
 @Data
-public class ExampleDetail {
-    @Id
-    @GeneratedValue
-    public Long id;
-    public Date createAt;
-    @JsonIgnore
-    public Date updateAt;
-    @JsonIgnore
-    private Date deleteAt;
+public class ExampleDetail extends BaseEntity{
     private String content;
     private String exampleExplain;
     private String runtimeResult;
 
-    public ExampleDetail() {
-        createAt = new Date();
-        updateAt = new Date();
-    }
 }

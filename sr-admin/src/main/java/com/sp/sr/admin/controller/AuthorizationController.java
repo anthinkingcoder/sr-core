@@ -1,6 +1,6 @@
 package com.sp.sr.admin.controller;
 
-import com.sp.sr.admin.service.AuthorizationService;
+import com.sp.sr.model.service.AuthorizationService;
 import com.sp.sr.model.vo.ResultVO;
 import com.sp.sr.model.domain.User;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -27,7 +27,7 @@ public class AuthorizationController {
     public ResultVO<Object> login(String username, String password, HttpServletRequest request) {
         User user = authorizationService.authorize(username, password);
         HttpSession session = request.getSession();
-        session.setAttribute("user", user);
+        session.setAttribute("adminUser", user);
         Map<String, Object> args = new HashMap<>(15);
         args.put("name", user.getName());
         return ResultVO.ok(args);

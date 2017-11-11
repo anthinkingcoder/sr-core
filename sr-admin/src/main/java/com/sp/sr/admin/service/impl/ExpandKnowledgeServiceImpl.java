@@ -1,16 +1,15 @@
 package com.sp.sr.admin.service.impl;
 
 import com.sp.sr.admin.Auths;
-import com.sp.sr.admin.controller.BaseController;
-import com.sp.sr.admin.reponsity.ExpandKnowledgeRepository;
-import com.sp.sr.admin.service.ExpandKnowledgeService;
+import com.sp.sr.model.repository.ExpandKnowledgeRepository;
+import com.sp.sr.model.service.ExpandKnowledgeService;
 import com.sp.sr.model.domain.ExpandKnowledge;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
-import static com.sp.sr.admin.controller.BaseController.USER;
+import static com.sp.sr.model.controller.BaseController.USER;
 
 /**
  * @author zhoulin

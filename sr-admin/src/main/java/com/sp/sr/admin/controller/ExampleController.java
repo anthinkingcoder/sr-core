@@ -1,7 +1,8 @@
 package com.sp.sr.admin.controller;
 
-import com.sp.sr.admin.service.ExampleService;
+import com.sp.sr.model.controller.BaseController;
 import com.sp.sr.model.dto.ExampleDTO;
+import com.sp.sr.model.service.ExampleService;
 import com.sp.sr.model.vo.ResultVO;
 import com.sp.sr.model.domain.example.Example;
 import org.springframework.beans.factory.annotation.Autowired;

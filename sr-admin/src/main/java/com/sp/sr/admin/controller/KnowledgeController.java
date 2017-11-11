@@ -2,8 +2,9 @@ package com.sp.sr.admin.controller;
 
 import com.sp.sr.admin.Auths;
 import com.sp.sr.admin.SrAdminException;
-import com.sp.sr.admin.service.KnowledgeService;
-import com.sp.sr.admin.service.ResourceDocumentService;
+import com.sp.sr.model.controller.BaseController;
+import com.sp.sr.model.service.KnowledgeService;
+import com.sp.sr.model.service.ResourceDocumentService;
 import com.sp.sr.model.vo.ResultVO;
 import com.sp.sr.model.domain.Knowledge;
 import com.sp.sr.model.domain.ResourceDocument;

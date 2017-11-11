@@ -1,18 +1,15 @@
 package com.sp.sr.admin.service.impl;
 
 import com.sp.sr.admin.SrAdminException;
-import com.sp.sr.admin.service.AuthorizationService;
-import com.sp.sr.admin.service.UserService;
 import com.sp.sr.model.domain.User;
-import com.sp.sr.model.enums.ResultStatus;
-import com.sp.sr.model.enums.RoleCategoryEnum;
+import com.sp.sr.model.service.AuthorizationService;
+import com.sp.sr.model.service.UserService;
 import com.sp.sr.model.util.Hashes;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.util.StringUtils;
 
 import java.util.Date;
-import java.util.Objects;
 import java.util.Random;
 
 /**

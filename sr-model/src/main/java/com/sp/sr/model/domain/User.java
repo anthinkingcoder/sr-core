@@ -16,16 +16,7 @@ import java.util.Date;
  */
 @Entity(name = "core_user")
 @Data
-public class User implements Serializable {
-    @Id
-    @GeneratedValue
-    private Long id;
-    @JsonIgnore
-    private Date createAt;
-    @JsonIgnore
-    private Date updateAt;
-    @JsonIgnore
-    private Date deleteAt;
+public class User extends BaseEntity implements Serializable{
     private String username;
     @JsonIgnore
     private String password;
@@ -34,12 +25,7 @@ public class User implements Serializable {
     private String name;
     private Date lastLoginTime;
     private Integer level;
-
     @JsonIgnore
     private Integer status;
 
-    public User() {
-        createAt = new Date();
-        updateAt = new Date();
-    }
 }

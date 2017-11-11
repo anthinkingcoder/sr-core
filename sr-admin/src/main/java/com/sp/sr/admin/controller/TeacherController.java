@@ -1,13 +1,13 @@
 package com.sp.sr.admin.controller;
 
 import com.sp.sr.admin.SrAdminException;
-import com.sp.sr.admin.service.UserService;
 import com.sp.sr.model.domain.User;
-import com.sp.sr.model.dto.TeacherVO;
 import com.sp.sr.model.enums.ResultStatus;
 import com.sp.sr.model.enums.RoleCategoryEnum;
+import com.sp.sr.model.service.UserService;
 import com.sp.sr.model.util.Hashes;
 import com.sp.sr.model.vo.ResultVO;
+import com.sp.sr.model.vo.TeacherVO;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;

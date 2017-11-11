@@ -1,6 +1,7 @@
 package com.sp.sr.model.domain.example;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.sp.sr.model.domain.BaseEntity;
 import lombok.Data;
 
 import javax.persistence.Entity;
@@ -10,23 +11,12 @@ import java.util.Date;
 
 @Entity(name = "core_example")
 @Data
-public class Example {
-    @Id
-    @GeneratedValue
-    public Long id;
-    public Date createAt;
-    @JsonIgnore
-    public Date updateAt;
-    @JsonIgnore
-    private Date deleteAt;
+public class Example extends BaseEntity {
     private String title;
     private Long exampleDetailId;
     private Long knowledgeId;
     private Long topicId;
     private Long uploaderId;
 
-    public Example() {
-        createAt = new Date();
-        updateAt = new Date();
-    }
+
 }

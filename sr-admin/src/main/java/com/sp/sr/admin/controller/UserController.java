@@ -1,5 +1,6 @@
 package com.sp.sr.admin.controller;
 
+import com.sp.sr.model.controller.BaseController;
 import com.sp.sr.model.vo.ResultVO;
 import com.sp.sr.model.domain.User;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -19,14 +20,14 @@ public class UserController {
     @RequestMapping("/userinfo")
     @GetMapping
     public ResultVO<Object> getUserInfo(HttpSession session) {
-        User user = (User) session.getAttribute("user");
+        User user = (User) session.getAttribute("adminUser");
         return ResultVO.ok(user);
     }
 
     @RequestMapping("/logout")
     @GetMapping
     public ResultVO<Object> logout(HttpSession session) {
-        session.removeAttribute("user");
+        session.removeAttribute("adminUser");
         BaseController.USER.remove();
         return ResultVO.ok();
     }

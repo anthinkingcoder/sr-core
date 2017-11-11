@@ -2,10 +2,11 @@ package com.sp.sr.admin.controller;
 
 import com.sp.sr.admin.Auths;
 import com.sp.sr.admin.SrAdminException;
-import com.sp.sr.admin.service.StudentWorkService;
+import com.sp.sr.model.controller.BaseController;
 import com.sp.sr.model.domain.StudentWork;
 import com.sp.sr.model.enums.ResultStatus;
 import com.sp.sr.model.enums.StudentWorkCategoryEnum;
+import com.sp.sr.model.service.StudentWorkService;
 import com.sp.sr.model.vo.ResultVO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;

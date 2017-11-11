@@ -75,6 +75,21 @@ CREATE TABLE core_expand_knowledge (
   DEFAULT CHARSET = utf8
   COMMENT ='拓展知识表';
 
+DROP TABLE IF EXISTS `core_topic_cagegory`;
+CREATE TABLE core_topic_category (
+  `id`        BIGINT UNSIGNED AUTO_INCREMENT,
+  `create_at` DATETIME     NOT NULL,
+  `update_at` DATETIME     NOT NULL,
+  `delete_at` DATETIME        DEFAULT NULL,
+  `name`      VARCHAR(255) NOT NULL,
+  `summary`   VARCHAR(255)    DEFAULT NULL,
+  `sort`      INT             DEFAULT 0,
+  PRIMARY KEY (id)
+)
+  ENGINE = InnoDB
+  DEFAULT CHARSET = utf8
+  COMMENT ='专题类别表';
+
 DROP TABLE IF EXISTS `core_topic`;
 CREATE TABLE core_topic (
   `id`          BIGINT UNSIGNED AUTO_INCREMENT,
@@ -84,6 +99,7 @@ CREATE TABLE core_topic (
   `name`        VARCHAR(255
                 )               NOT NULL
   COMMENT '专题名称',
+  `category_id` BIGINT UNSIGNED NOT NULL,
   `uploader_id` BIGINT UNSIGNED NOT NULL
   COMMENT '上传者编号',
   PRIMARY KEY (id)
@@ -163,7 +179,7 @@ CREATE TABLE core_resource_document (
   `delete_at`   DATETIME        DEFAULT NULL,
   `cover_url`   VARCHAR(255)    DEFAULT NULL
   COMMENT '资源文档封面图路径',
-  `content`     TEXT            DEFAULT NULL
+  `content`     LONGTEXT        DEFAULT NULL
   COMMENT '图片内容',
   `uploader_id` BIGINT UNSIGNED NOT NULL
   COMMENT '上传者编号',
@@ -172,6 +188,7 @@ CREATE TABLE core_resource_document (
   ENGINE = InnoDB
   DEFAULT CHARSET = utf8
   COMMENT ='资源文档表';
+
 
 DROP TABLE IF EXISTS `core_resource`;
 CREATE TABLE core_resource (

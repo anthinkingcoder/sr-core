@@ -5,7 +5,7 @@ package com.sp.sr.model.enums;
  * @author zhoulin
  */
 public enum ResourceCategoryEnum {
-    BOOK(1, "课程设计"),
+    BOOK(1, "电子书"),
     SOFTWARE(2, "软件资源"),
     WEBSITE(3, "优秀网站");
     private Integer state;

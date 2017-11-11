@@ -13,15 +13,7 @@ import java.util.Date;
  */
 @Entity(name = "core_resource")
 @Data
-public class Resource {
-    @Id
-    @GeneratedValue
-    public Long id;
-    public Date createAt;
-    @JsonIgnore
-    public Date updateAt;
-    @JsonIgnore
-    private Date deleteAt;
+public class Resource extends BaseEntity{
     private Integer category;
     private String coverUrl;
     private String url;
@@ -29,9 +21,4 @@ public class Resource {
     private String summary;
     private Long uploaderId;
 
-    public Resource() {
-        createAt = new Date();
-        updateAt = new Date();
-
-    }
 }

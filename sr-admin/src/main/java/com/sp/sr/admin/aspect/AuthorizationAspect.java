@@ -1,14 +1,12 @@
 package com.sp.sr.admin.aspect;
 
-import com.sp.sr.admin.Auths;
 import com.sp.sr.admin.SrAdminException;
-import com.sp.sr.admin.controller.BaseController;
-import com.sp.sr.admin.service.UserService;
+import com.sp.sr.model.controller.BaseController;
 import com.sp.sr.model.domain.User;
 import com.sp.sr.model.enums.ResultStatus;
 import com.sp.sr.model.enums.RoleCategoryEnum;
+import com.sp.sr.model.service.UserService;
 import lombok.extern.slf4j.Slf4j;
-import org.aspectj.lang.annotation.After;
 import org.aspectj.lang.annotation.Aspect;
 import org.aspectj.lang.annotation.Before;
 import org.aspectj.lang.annotation.Pointcut;
@@ -37,18 +35,19 @@ public class AuthorizationAspect {
 
     }
 
-    @Pointcut("execution(public * com.sp.sr.admin.controller.TeacherController.*(..))")
+    @Pointcut("execution(public * com.sp.sr.admin.controller.TeacherController.*(..))" +
+            "&&execution(public * com.sp.sr.admin.controller.TopicCategoryController.*(..))")
     public void system() {
 
     }
 
     @Pointcut("execution(public * com.sp.sr.admin.controller.*.*(..))" +
             "&& !execution(public * com.sp.sr.admin.controller.AuthorizationController.*(..)) " +
-            "&& !execution(public * com.sp.sr.admin.controller.TeacherController.*(..))")
+            "&& !execution(public * com.sp.sr.admin.controller.TeacherController.*(..))" +
+            "&& !execution(public * com.sp.sr.admin.controller.TopicCategoryController.*(..))")
     public void admin() {
 
     }
-
 
 
     @Before("verity()")
@@ -57,14 +56,14 @@ public class AuthorizationAspect {
         ServletRequestAttributes attributes = (ServletRequestAttributes) RequestContextHolder.getRequestAttributes();
         HttpServletRequest request = attributes.getRequest();
         HttpSession session = request.getSession();
-        User user = (User) session.getAttribute("user");
+        User user = (User) session.getAttribute("adminUser");
         if (user == null) {
             throw new SrAdminException(ResultStatus.AUTHORIZE_ERROR);
         }
 
         user = userService.findUserByUsername(user.getUsername());
-        session.setAttribute("user", user);
-        BaseController.USER.set((User) session.getAttribute("user"));
+        session.setAttribute("adminUser", user);
+        BaseController.USER.set((User) session.getAttribute("adminUser"));
 
     }
 

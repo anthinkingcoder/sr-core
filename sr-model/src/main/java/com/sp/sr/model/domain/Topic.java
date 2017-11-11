@@ -11,20 +11,11 @@ import java.util.Date;
 
 @Entity(name = "core_topic")
 @Data
-public class Topic {
-    @Id
-    @GeneratedValue
-    private Long id;
-    private Date createAt;
-    @JsonIgnore
-    private Date updateAt;
-    @JsonIgnore
-    private Date deleteAt;
+public class Topic extends BaseEntity{
+
     private Long uploaderId;
     private String name;
+    private String coverUrl;
+    private Long categoryId;
 
-    public Topic() {
-        createAt = new Date();
-        updateAt = new Date();
-    }
 }

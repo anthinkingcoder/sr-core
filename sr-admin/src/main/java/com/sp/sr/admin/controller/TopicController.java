@@ -2,7 +2,8 @@ package com.sp.sr.admin.controller;
 
 import com.sp.sr.admin.Auths;
 import com.sp.sr.admin.SrAdminException;
-import com.sp.sr.admin.service.TopicService;
+import com.sp.sr.model.controller.BaseController;
+import com.sp.sr.model.service.TopicService;
 import com.sp.sr.model.vo.ResultVO;
 import com.sp.sr.model.domain.Topic;
 import com.sp.sr.model.enums.ResultStatus;
@@ -40,7 +41,9 @@ public class TopicController extends BaseController {
     @PostMapping(path = "/save")
     public ResultVO<Topic> save(
             @RequestParam(required = false) Long id,
-            @RequestParam String name) {
+            @RequestParam String name,
+            @RequestParam(required = false) String coverUrl,
+            @RequestParam Long categoryId) {
 
         Topic topic;
         if (id != null && id != 0) {
@@ -56,6 +59,8 @@ public class TopicController extends BaseController {
             topic.setUploaderId(USER.get().getId());
         }
         topic.setName(name);
+        topic.setCoverUrl(coverUrl);
+        topic.setCategoryId(categoryId);
         topic = topicService.save(topic);
         return ResultVO.ok(topic);
 

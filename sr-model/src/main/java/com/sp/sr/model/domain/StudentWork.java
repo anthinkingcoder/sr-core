@@ -10,15 +10,7 @@ import java.util.Date;
 
 @Entity(name = "core_student_work")
 @Data
-public class StudentWork {
-    @Id
-    @GeneratedValue
-    public Long id;
-    public Date createAt;
-    @JsonIgnore
-    public Date updateAt;
-    @JsonIgnore
-    private Date deleteAt;
+public class StudentWork extends BaseEntity{
     private String title;
     private String author;
     private String summary;
@@ -26,8 +18,4 @@ public class StudentWork {
     private Integer category;
     private Long uploaderId;
 
-    public StudentWork() {
-        createAt = new Date();
-        updateAt = new Date();
-    }
 }

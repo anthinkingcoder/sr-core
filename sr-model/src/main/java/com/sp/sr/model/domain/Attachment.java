@@ -13,15 +13,7 @@ import java.util.Date;
  */
 @Entity(name = "core_attachment")
 @Data
-public class Attachment {
-    @Id
-    @GeneratedValue
-    public Long id;
-    public Date createAt;
-    @JsonIgnore
-    public Date updateAt;
-    @JsonIgnore
-    private Date deleteAt;
+public class Attachment extends BaseEntity{
     private String name;
     private Integer moduleCategory;
     private Long moduleId;
@@ -29,8 +21,4 @@ public class Attachment {
     private Integer sort;
     private Long uploaderId;
 
-    public Attachment() {
-        createAt = new Date();
-        updateAt = new Date();
-    }
 }

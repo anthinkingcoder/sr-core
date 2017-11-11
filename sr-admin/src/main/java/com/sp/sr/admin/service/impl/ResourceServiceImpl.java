@@ -1,15 +1,15 @@
 package com.sp.sr.admin.service.impl;
 
 import com.sp.sr.admin.Auths;
-import com.sp.sr.admin.reponsity.ResourceRepository;
-import com.sp.sr.admin.service.ResourceService;
+import com.sp.sr.model.repository.ResourceRepository;
+import com.sp.sr.model.service.ResourceService;
 import com.sp.sr.model.domain.Resource;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
-import static com.sp.sr.admin.controller.BaseController.USER;
+import static com.sp.sr.model.controller.BaseController.USER;
 
 /**
  * @author zhoulin
@@ -36,5 +36,10 @@ public class ResourceServiceImpl implements ResourceService {
     @Override
     public Resource save(Resource resource) {
         return resourceRepository.save(resource);
+    }
+
+    @Override
+    public Page<Resource> findAllByCategory(Pageable pageable, Integer category) {
+        return resourceRepository.findAllByDeleteAtIsNullAndCategory(pageable,category);
     }
 }

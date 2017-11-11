@@ -1,10 +1,9 @@
 package com.sp.sr.admin.service.impl;
 
 import com.sp.sr.admin.Auths;
-import com.sp.sr.admin.reponsity.TopicRepository;
-import com.sp.sr.admin.service.TopicService;
+import com.sp.sr.model.repository.TopicRepository;
+import com.sp.sr.model.service.TopicService;
 import com.sp.sr.model.domain.Topic;
-import com.sp.sr.model.domain.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -12,7 +11,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 
-import static com.sp.sr.admin.controller.BaseController.USER;
+import static com.sp.sr.model.controller.BaseController.USER;
 
 /**
  * @author zhoulin
@@ -46,5 +45,10 @@ public class TopicServiceImpl implements TopicService {
     @Override
     public Topic save(Topic topic) {
         return repository.save(topic);
+    }
+
+    @Override
+    public List<Topic> findAllByCategoryId(Long categoryId) {
+        return repository.findAllByDeleteAtIsNullAndCategoryId(categoryId);
     }
 }

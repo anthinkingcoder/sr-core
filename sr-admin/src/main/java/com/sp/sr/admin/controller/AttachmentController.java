@@ -2,9 +2,12 @@ package com.sp.sr.admin.controller;
 
 import com.sp.sr.admin.Auths;
 import com.sp.sr.admin.SrAdminException;
-import com.sp.sr.admin.service.AttachmentService;
-import com.sp.sr.admin.service.ExampleService;
-import com.sp.sr.admin.service.KnowledgeService;
+import com.sp.sr.model.controller.BaseController;
+import com.sp.sr.model.domain.StudentWork;
+import com.sp.sr.model.service.AttachmentService;
+import com.sp.sr.model.service.ExampleService;
+import com.sp.sr.model.service.KnowledgeService;
+import com.sp.sr.model.service.StudentWorkService;
 import com.sp.sr.model.vo.ResultVO;
 import com.sp.sr.model.domain.Attachment;
 import com.sp.sr.model.domain.Knowledge;
@@ -33,6 +36,9 @@ public class AttachmentController extends BaseController {
 
     @Autowired
     private ExampleService exampleService;
+
+    @Autowired
+    private StudentWorkService studentWorkService;
 
 
     @RequestMapping("/module/list")
@@ -65,7 +71,10 @@ public class AttachmentController extends BaseController {
                 throw new SrAdminException(ResultStatus.RESOURCE_NOT_FOUND);
             }
         } else if (ModuleCategoryEnum.STUDENT_WORK.getState().equals(moduleCategory)) {
-            throw new SrAdminException(ResultStatus.RESOURCE_NOT_FOUND);
+            StudentWork studentWork = studentWorkService.findOne(moduleId);
+            if (studentWork == null) {
+                throw new SrAdminException(ResultStatus.RESOURCE_NOT_FOUND);
+            }
         } else {
             throw new SrAdminException(ResultStatus.RESOURCE_NOT_FOUND);
         }
