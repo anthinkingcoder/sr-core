@@ -12,8 +12,9 @@ public enum ResultStatus {
     UPLOADER_ERROR(604, "非本人上传"),
     REPEAT_SAVE(605, "重复操作资源"),
     PERMISSION_ERROR(606, "没有权限"),
-    RESOURCE_REPEAT(607,"资源重复增加");
+    RESOURCE_REPEAT(607,"资源重复增加"),
 
+    QUESTION_NUM_NOT(608,"出题来源,题目数量不够");
     private Integer code;
     private String message;
 

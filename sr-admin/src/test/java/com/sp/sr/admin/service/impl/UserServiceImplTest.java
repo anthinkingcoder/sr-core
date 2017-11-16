@@ -1,6 +1,7 @@
 package com.sp.sr.admin.service.impl;
 
-import com.sp.sr.model.domain.User;
+import com.sp.sr.admin.user.service.UserServiceImpl;
+import com.sp.sr.model.domain.user.User;
 import com.sp.sr.model.util.Hashes;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.Assert;

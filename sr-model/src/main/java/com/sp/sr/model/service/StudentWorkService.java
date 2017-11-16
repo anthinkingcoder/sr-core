@@ -1,6 +1,6 @@
 package com.sp.sr.model.service;
 
-import com.sp.sr.model.domain.StudentWork;
+import com.sp.sr.model.domain.work.StudentWork;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 

@@ -1,6 +1,6 @@
 package com.sp.sr.model.service;
 
-import com.sp.sr.model.domain.TopicCategory;
+import com.sp.sr.model.domain.topic.TopicCategory;
 
 import java.util.List;
 

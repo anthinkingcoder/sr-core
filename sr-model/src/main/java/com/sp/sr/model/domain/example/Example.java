@@ -17,6 +17,6 @@ public class Example extends BaseEntity {
     private Long knowledgeId;
     private Long topicId;
     private Long uploaderId;
-
+    private Integer level;
 
 }

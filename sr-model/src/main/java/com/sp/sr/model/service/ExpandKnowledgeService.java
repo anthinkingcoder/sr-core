@@ -1,6 +1,6 @@
 package com.sp.sr.model.service;
 
-import com.sp.sr.model.domain.ExpandKnowledge;
+import com.sp.sr.model.domain.knowledge.ExpandKnowledge;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 

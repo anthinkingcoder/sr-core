@@ -1,6 +1,5 @@
 package com.sp.sr.web.handler;
 
-import com.sp.sr.admin.SrAdminException;
 import com.sp.sr.model.enums.ResultStatus;
 import com.sp.sr.model.vo.ResultVO;
 import com.sp.sr.web.SrWebException;

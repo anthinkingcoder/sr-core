@@ -1,6 +1,6 @@
 package com.sp.sr.model.controller;
 
-import com.sp.sr.model.domain.User;
+import com.sp.sr.model.domain.user.User;
 
 /**
  * @author zhoulin

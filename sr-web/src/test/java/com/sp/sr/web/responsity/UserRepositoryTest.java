@@ -1,7 +1,7 @@
 package com.sp.sr.web.responsity;
 
-import com.sp.sr.model.repository.UserRepository;
-import com.sp.sr.model.domain.User;
+import com.sp.sr.model.repository.user.UserRepository;
+import com.sp.sr.model.domain.user.User;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.Assert;
 import org.junit.Test;

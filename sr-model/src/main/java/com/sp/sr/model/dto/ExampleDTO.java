@@ -15,6 +15,7 @@ public class ExampleDTO {
     private Long topicId;
     private Long uploaderId;
     private Long operatorId;
+    private Integer level;
 
 
 }

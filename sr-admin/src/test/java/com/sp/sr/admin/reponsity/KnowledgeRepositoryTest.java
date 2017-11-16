@@ -1,8 +1,8 @@
 package com.sp.sr.admin.reponsity;
 
-import com.sp.sr.model.domain.Knowledge;
+import com.sp.sr.model.domain.knowledge.Knowledge;
 import com.sp.sr.model.enums.KnowledgeLevelEnum;
-import com.sp.sr.model.repository.KnowledgeRepository;
+import com.sp.sr.model.repository.knowledge.KnowledgeRepository;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.Assert;
 import org.junit.Test;

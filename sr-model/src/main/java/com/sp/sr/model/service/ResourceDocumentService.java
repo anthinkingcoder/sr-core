@@ -1,6 +1,6 @@
 package com.sp.sr.model.service;
 
-import com.sp.sr.model.domain.ResourceDocument;
+import com.sp.sr.model.domain.knowledge.ResourceDocument;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 

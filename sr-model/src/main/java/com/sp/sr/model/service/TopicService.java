@@ -1,7 +1,6 @@
 package com.sp.sr.model.service;
 
-import com.sp.sr.model.domain.Topic;
-import com.sp.sr.model.domain.TopicCategory;
+import com.sp.sr.model.domain.topic.Topic;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 

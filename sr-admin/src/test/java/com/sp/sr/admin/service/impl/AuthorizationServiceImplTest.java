@@ -1,7 +1,8 @@
 package com.sp.sr.admin.service.impl;
 
-import com.sp.sr.admin.SrAdminException;
-import com.sp.sr.model.domain.User;
+import com.sp.sr.admin.common.SrAdminException;
+import com.sp.sr.admin.user.service.AuthorizationServiceImpl;
+import com.sp.sr.model.domain.user.User;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.Assert;
 import org.junit.Test;
