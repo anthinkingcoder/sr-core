@@ -1,4 +1,4 @@
-package com.sp.sr.model.service;
+package com.sp.sr.model.service.topic;
 
 import com.sp.sr.model.domain.topic.TopicCategory;
 

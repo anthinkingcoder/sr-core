@@ -1,5 +1,6 @@
-package com.sp.sr.model.service;
+package com.sp.sr.model.service.knowledge;
 
+import com.sp.sr.model.domain.knowledge.ExpandKnowledge;
 import com.sp.sr.model.domain.knowledge.Knowledge;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -12,7 +13,6 @@ public interface KnowledgeService {
     Page<Knowledge> findAllByDeleteAtIsNullAndLevel(Pageable pageable, Integer level);
 
 
-
     Knowledge save(Knowledge knowledge);
 
     Knowledge findById(Long id);
@@ -23,4 +23,6 @@ public interface KnowledgeService {
     List<Knowledge> findAllByTopicId(Long topicId);
 
     List<Knowledge> findAllByLevel(Integer level);
+
+    Page<Knowledge> findAllByNameAndLevel(String name, Integer level, Pageable pageable);
 }

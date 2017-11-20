@@ -76,7 +76,6 @@ public class ExpandKnowledgeController extends BaseController {
             throw new SrAdminException(ResultStatus.RESOURCE_NOT_FOUND);
         }
         Auths.verityUploader(USER.get(), expandKnowledge.getUploaderId());
-
         try {
             expandKnowledge.setDeleteAt(new Date());
             expandKnowledgeService.save(expandKnowledge);

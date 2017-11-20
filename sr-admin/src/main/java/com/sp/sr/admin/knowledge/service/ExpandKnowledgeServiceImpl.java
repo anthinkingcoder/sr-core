@@ -29,7 +29,6 @@ public class ExpandKnowledgeServiceImpl implements ExpandKnowledgeService {
     public Page<ExpandKnowledge> findAll(Pageable pageable) {
         if (Auths.isSystem(USER.get())) {
             return repository.findAllByDeleteAtIsNullOrderByCreateAtAsc(pageable);
-
         } else {
             return repository.findAllByDeleteAtIsNullAndUploaderIdOrderByCreateAtAsc(pageable, USER.get().getId());
         }

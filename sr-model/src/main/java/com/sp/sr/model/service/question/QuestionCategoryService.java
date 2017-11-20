@@ -1,4 +1,4 @@
-package com.sp.sr.model.service;
+package com.sp.sr.model.service.question;
 
 import com.sp.sr.model.domain.question.QuestionCategory;
 import com.sp.sr.model.dto.QuestionCategoryTreeDTO;

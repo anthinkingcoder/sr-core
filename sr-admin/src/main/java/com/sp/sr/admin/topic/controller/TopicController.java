@@ -76,4 +76,15 @@ public class TopicController extends BaseController {
         return ResultVO.ok(topic);
     }
 
+    @PostMapping("/delete")
+    public ResultVO<Object> delete(@RequestParam Long id) {
+        Topic topic = topicService.findById(id);
+        if (topic == null) {
+            throw new SrAdminException(ResultStatus.RESOURCE_NOT_FOUND);
+        }
+        topic.setDeleteAt(new Date());
+        topicService.save(topic);
+        Auths.verityUploader(USER.get(), topic.getUploaderId());
+        return ResultVO.ok(topic);
+    }
 }

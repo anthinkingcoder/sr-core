@@ -1,4 +1,4 @@
-package com.sp.sr.model.service;
+package com.sp.sr.model.service.knowledge;
 
 import com.sp.sr.model.domain.knowledge.ExpandKnowledge;
 import org.springframework.data.domain.Page;
@@ -10,4 +10,6 @@ public interface ExpandKnowledgeService {
     Page<ExpandKnowledge> findAll(Pageable pageable);
 
     ExpandKnowledge save(ExpandKnowledge expandKnowledge);
+
+    Page<ExpandKnowledge> findAllByName(String title,Pageable pageable);
 }

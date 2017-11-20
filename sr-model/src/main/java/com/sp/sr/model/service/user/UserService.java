@@ -1,4 +1,4 @@
-package com.sp.sr.model.service;
+package com.sp.sr.model.service.user;
 
 import com.sp.sr.model.domain.user.User;
 import org.springframework.data.domain.Page;

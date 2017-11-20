@@ -1,4 +1,4 @@
-package com.sp.sr.model.service;
+package com.sp.sr.model.service.knowledge;
 
 import com.sp.sr.model.domain.knowledge.ResourceDocument;
 import org.springframework.data.domain.Page;
