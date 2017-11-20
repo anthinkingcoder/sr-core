@@ -3,7 +3,7 @@ package com.sp.sr.web.knowledge.service;
 import com.sp.sr.model.domain.knowledge.ResourceDocument;
 import com.sp.sr.model.enums.ResultStatus;
 import com.sp.sr.model.repository.knowledge.ResourceDocumentRepository;
-import com.sp.sr.model.service.ResourceDocumentService;
+import com.sp.sr.model.service.knowledge.ResourceDocumentService;
 import com.sp.sr.web.SrWebException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;

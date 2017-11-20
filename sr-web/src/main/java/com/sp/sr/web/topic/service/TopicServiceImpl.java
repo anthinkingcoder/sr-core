@@ -3,7 +3,7 @@ package com.sp.sr.web.topic.service;
 import com.sp.sr.model.domain.topic.Topic;
 import com.sp.sr.model.enums.ResultStatus;
 import com.sp.sr.model.repository.topic.TopicRepository;
-import com.sp.sr.model.service.TopicService;
+import com.sp.sr.model.service.topic.TopicService;
 import com.sp.sr.web.SrWebException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -43,5 +43,10 @@ public class TopicServiceImpl implements TopicService {
     @Override
     public List<Topic> findAllByCategoryId(Long categoryId) {
         return repository.findAllByDeleteAtIsNullAndCategoryId(categoryId);
+    }
+
+    @Override
+    public Page<Topic> findAllByName(String name, Pageable pageable) {
+        return repository.findAllByDeleteAtIsNullAndNameContains(name, pageable);
     }
 }

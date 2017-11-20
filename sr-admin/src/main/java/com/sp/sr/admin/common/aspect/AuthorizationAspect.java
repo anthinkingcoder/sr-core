@@ -5,7 +5,7 @@ import com.sp.sr.model.controller.BaseController;
 import com.sp.sr.model.domain.user.User;
 import com.sp.sr.model.enums.ResultStatus;
 import com.sp.sr.model.enums.RoleCategoryEnum;
-import com.sp.sr.model.service.UserService;
+import com.sp.sr.model.service.user.UserService;
 import lombok.extern.slf4j.Slf4j;
 import org.aspectj.lang.annotation.Aspect;
 import org.aspectj.lang.annotation.Before;

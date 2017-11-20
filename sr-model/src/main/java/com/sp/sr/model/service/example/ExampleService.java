@@ -26,4 +26,6 @@ public interface ExampleService {
 
     List<Example> findAllByKnowledgeId(Long knowledgeId);
 
+
+
 }

@@ -11,15 +11,12 @@ import org.springframework.data.jpa.repository.JpaRepository;
 public interface StudentWorkRepository extends JpaRepository<StudentWork, Long> {
     Page<StudentWork> findAllByDeleteAtIsNullOrderByIdAsc(Pageable pageable);
 
-    Page<StudentWork> findAllByDeleteAtIsNullAndCategoryOrderByIdAsc(Pageable pageable,Integer category);
+    Page<StudentWork> findAllByDeleteAtIsNullAndCategoryOrderByIdAsc(Pageable pageable, Integer category);
 
+    Page<StudentWork> findAllByDeleteAtIsNullAndTitleContains(Pageable pageable, String title);
 
     Page<StudentWork> findAllByDeleteAtIsNullAndUploaderIdOrderByIdAsc(Pageable pageable, Long uploaderId);
 
-
     StudentWork findByIdAndDeleteAtIsNull(Long id);
-
-
-
 
 }

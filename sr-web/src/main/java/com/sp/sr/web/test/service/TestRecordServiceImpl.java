@@ -13,7 +13,7 @@ import com.sp.sr.model.repository.question.QuestionCategoryRepository;
 import com.sp.sr.model.repository.question.QuestionRecordRepository;
 import com.sp.sr.model.repository.question.QuestionRepository;
 import com.sp.sr.model.repository.test.TestRecordRepository;
-import com.sp.sr.model.service.TestRecordService;
+import com.sp.sr.model.service.test.TestRecordService;
 import com.sp.sr.model.util.Strings;
 import com.sp.sr.web.SrWebException;
 import lombok.extern.slf4j.Slf4j;
@@ -344,12 +344,12 @@ public class TestRecordServiceImpl implements TestRecordService {
 
     @Override
     public Page<TestRecord> findAll(Pageable pageable) {
-        return testRecordRepository.findAllByDeleteAtIsNullOrderByIdDesc(pageable);
+        return testRecordRepository.findAllByDeleteAtIsNullAndStudentIdOrderByIdDesc(pageable,BaseController.USER.get().getId());
     }
 
     @Override
     public Page<TestRecord> findAllByStatus(Pageable pageable, Integer status) {
-        return testRecordRepository.findAllByStatusAndDeleteAtIsNullOrderByEndTimeDesc(pageable,status);
+        return testRecordRepository.findAllByStatusAndDeleteAtIsNullAndStudentIdOrderByEndTimeDesc(pageable,status,BaseController.USER.get().getId());
     }
 
 

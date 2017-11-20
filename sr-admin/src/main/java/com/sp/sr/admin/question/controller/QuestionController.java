@@ -6,8 +6,8 @@ import com.sp.sr.model.domain.question.Question;
 import com.sp.sr.model.domain.question.QuestionCategory;
 import com.sp.sr.model.enums.AnswerCategoryEnum;
 import com.sp.sr.model.enums.ResultStatus;
-import com.sp.sr.model.service.QuestionCategoryService;
-import com.sp.sr.model.service.QuestionService;
+import com.sp.sr.model.service.question.QuestionCategoryService;
+import com.sp.sr.model.service.question.QuestionService;
 import com.sp.sr.model.util.Strings;
 import com.sp.sr.model.vo.ResultVO;
 import lombok.extern.slf4j.Slf4j;
@@ -17,6 +17,8 @@ import org.springframework.data.domain.PageRequest;
 import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.*;
 
+import javax.xml.transform.Result;
+import java.util.Date;
 import java.util.Objects;
 
 import static com.sp.sr.model.controller.BaseController.USER;
@@ -107,6 +109,17 @@ public class QuestionController {
         if (question == null) {
             throw new SrAdminException(ResultStatus.RESOURCE_NOT_FOUND);
         }
+        return ResultVO.ok(question);
+    }
+
+    @PostMapping("/delete")
+    public ResultVO<Question> delete(Long id) {
+        Question question = questionService.findById(id);
+        if (question == null) {
+            throw new SrAdminException(ResultStatus.RESOURCE_NOT_FOUND);
+        }
+        question.setDeleteAt(new Date());
+        questionService.save(question);
         return ResultVO.ok(question);
     }
 }

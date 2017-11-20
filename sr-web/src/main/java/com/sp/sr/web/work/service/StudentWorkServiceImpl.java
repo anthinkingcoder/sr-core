@@ -2,7 +2,7 @@ package com.sp.sr.web.work.service;
 
 import com.sp.sr.model.domain.work.StudentWork;
 import com.sp.sr.model.repository.work.StudentWorkRepository;
-import com.sp.sr.model.service.StudentWorkService;
+import com.sp.sr.model.service.work.StudentWorkService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -23,7 +23,7 @@ public class StudentWorkServiceImpl implements StudentWorkService {
 
     @Override
     public Page<StudentWork> findAll(Pageable pageable) {
-            return repository.findAllByDeleteAtIsNullOrderByIdAsc(pageable);
+        return repository.findAllByDeleteAtIsNullOrderByIdAsc(pageable);
     }
 
     @Override
@@ -33,6 +33,11 @@ public class StudentWorkServiceImpl implements StudentWorkService {
 
     @Override
     public Page<StudentWork> findAllByCategory(Pageable pageable, Integer category) {
-        return repository.findAllByDeleteAtIsNullAndCategoryOrderByIdAsc(pageable,category);
+        return repository.findAllByDeleteAtIsNullAndCategoryOrderByIdAsc(pageable, category);
+    }
+
+    @Override
+    public Page<StudentWork> findAllByTitle(String title, Pageable pageable) {
+        return repository.findAllByDeleteAtIsNullAndTitleContains(pageable, title);
     }
 }

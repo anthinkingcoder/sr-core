@@ -3,7 +3,7 @@ package com.sp.sr.admin.topic.controller;
 import com.sp.sr.admin.common.SrAdminException;
 import com.sp.sr.model.domain.topic.TopicCategory;
 import com.sp.sr.model.enums.ResultStatus;
-import com.sp.sr.model.service.TopicCategoryService;
+import com.sp.sr.model.service.topic.TopicCategoryService;
 import com.sp.sr.model.vo.ResultVO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;

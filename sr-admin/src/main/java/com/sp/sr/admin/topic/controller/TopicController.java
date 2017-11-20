@@ -3,7 +3,7 @@ package com.sp.sr.admin.topic.controller;
 import com.sp.sr.admin.common.Auths;
 import com.sp.sr.admin.common.SrAdminException;
 import com.sp.sr.model.controller.BaseController;
-import com.sp.sr.model.service.TopicService;
+import com.sp.sr.model.service.topic.TopicService;
 import com.sp.sr.model.vo.ResultVO;
 import com.sp.sr.model.domain.topic.Topic;
 import com.sp.sr.model.enums.ResultStatus;

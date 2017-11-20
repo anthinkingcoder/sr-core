@@ -2,7 +2,7 @@ package com.sp.sr.admin.work.service;
 
 import com.sp.sr.admin.common.Auths;
 import com.sp.sr.model.repository.work.StudentWorkRepository;
-import com.sp.sr.model.service.StudentWorkService;
+import com.sp.sr.model.service.work.StudentWorkService;
 import com.sp.sr.model.domain.work.StudentWork;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -39,6 +39,11 @@ public class StudentWorkServiceImpl implements StudentWorkService {
 
     @Override
     public Page<StudentWork> findAllByCategory(Pageable pageable, Integer category) {
+        return null;
+    }
+
+    @Override
+    public Page<StudentWork> findAllByTitle(String title, Pageable pageable) {
         return null;
     }
 }

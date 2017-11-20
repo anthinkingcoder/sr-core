@@ -2,7 +2,7 @@ package com.sp.sr.admin.topic.service;
 
 import com.sp.sr.model.domain.topic.TopicCategory;
 import com.sp.sr.model.repository.topic.TopicCategoryRepository;
-import com.sp.sr.model.service.TopicCategoryService;
+import com.sp.sr.model.service.topic.TopicCategoryService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

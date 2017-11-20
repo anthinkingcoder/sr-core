@@ -2,7 +2,7 @@ package com.sp.sr.web.test.controller;
 
 import com.sp.sr.model.domain.test.TestRecord;
 import com.sp.sr.model.dto.TestRecordDTO;
-import com.sp.sr.model.service.TestRecordService;
+import com.sp.sr.model.service.test.TestRecordService;
 import com.sp.sr.model.vo.ResultVO;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;

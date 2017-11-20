@@ -4,7 +4,7 @@ import com.sp.sr.admin.common.SrAdminException;
 import com.sp.sr.model.controller.BaseController;
 import com.sp.sr.model.domain.knowledge.ResourceDocument;
 import com.sp.sr.model.enums.ResultStatus;
-import com.sp.sr.model.service.ResourceDocumentService;
+import com.sp.sr.model.service.knowledge.ResourceDocumentService;
 import com.sp.sr.model.vo.ResultVO;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;

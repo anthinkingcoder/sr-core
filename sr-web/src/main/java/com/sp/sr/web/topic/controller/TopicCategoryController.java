@@ -1,7 +1,7 @@
 package com.sp.sr.web.topic.controller;
 
 import com.sp.sr.model.domain.topic.TopicCategory;
-import com.sp.sr.model.service.TopicCategoryService;
+import com.sp.sr.model.service.topic.TopicCategoryService;
 import com.sp.sr.model.vo.ResultVO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;

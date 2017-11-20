@@ -14,7 +14,9 @@ public class QuestionExplainComment extends BaseEntity {
     private Long questionExplainId;
     private Long userId;
     private String userNickName;
-    private String replyUserNickName;
-    private Long replyUserId;
-    private Integer agree;
+    private String toUserHeadImg;
+    private String userHeadImg;
+    private String toUserNickName;
+    private Long toUserId;
+    private Integer agree = 0;
 }

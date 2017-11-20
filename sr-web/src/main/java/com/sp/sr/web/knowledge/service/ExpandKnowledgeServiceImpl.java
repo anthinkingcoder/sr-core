@@ -3,7 +3,7 @@ package com.sp.sr.web.knowledge.service;
 import com.sp.sr.model.domain.knowledge.ExpandKnowledge;
 import com.sp.sr.model.enums.ResultStatus;
 import com.sp.sr.model.repository.knowledge.ExpandKnowledgeRepository;
-import com.sp.sr.model.service.ExpandKnowledgeService;
+import com.sp.sr.model.service.knowledge.ExpandKnowledgeService;
 import com.sp.sr.web.SrWebException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -33,4 +33,11 @@ public class ExpandKnowledgeServiceImpl implements ExpandKnowledgeService {
     public ExpandKnowledge save(ExpandKnowledge expandKnowledge) {
         throw new SrWebException(ResultStatus.SERVICE_ERROR);
     }
+
+    @Override
+    public Page<ExpandKnowledge> findAllByName(String name, Pageable pageable) {
+        return repository.findAllByDeleteAtIsNullAndNameContains(name,pageable);
+    }
+
+
 }

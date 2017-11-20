@@ -1,7 +1,7 @@
 package com.sp.sr.web.question.service;
 import com.sp.sr.model.domain.test.QuestionRecord;
 import com.sp.sr.model.repository.question.QuestionRecordRepository;
-import com.sp.sr.model.service.QuestionRecordService;
+import com.sp.sr.model.service.test.QuestionRecordService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import java.util.List;

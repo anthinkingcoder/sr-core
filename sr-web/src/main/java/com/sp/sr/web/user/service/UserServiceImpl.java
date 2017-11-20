@@ -2,7 +2,7 @@ package com.sp.sr.web.user.service;
 
 import com.sp.sr.model.domain.user.User;
 import com.sp.sr.model.repository.user.UserRepository;
-import com.sp.sr.model.service.UserService;
+import com.sp.sr.model.service.user.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;

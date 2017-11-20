@@ -4,7 +4,7 @@ import com.sp.sr.model.controller.BaseController;
 import com.sp.sr.model.domain.user.User;
 import com.sp.sr.model.enums.ResultStatus;
 import com.sp.sr.model.enums.RoleCategoryEnum;
-import com.sp.sr.model.service.UserService;
+import com.sp.sr.model.service.user.UserService;
 import com.sp.sr.model.util.Hashes;
 import com.sp.sr.model.vo.ResultVO;
 import com.sp.sr.web.SrWebException;
@@ -24,7 +24,8 @@ public class UserController {
     @PostMapping("/register")
     public ResultVO<User> register(@RequestParam String username,
                                    @RequestParam String password,
-                                   @RequestParam String name) {
+                                   @RequestParam String name,
+                                   @RequestParam String headImg) {
         User user = userService.findUserByUsername(username);
         if (user != null) {
             throw new SrWebException(ResultStatus.RESOURCE_REPEAT);
@@ -38,6 +39,7 @@ public class UserController {
         user.setName(name);
         user.setUsername(username);
         user.setStatus(0);
+        user.setHeadImg(headImg);
         user = userService.saveUser(user);
         return ResultVO.ok(user);
     }

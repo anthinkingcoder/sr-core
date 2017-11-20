@@ -3,7 +3,7 @@ package com.sp.sr.web.knowledge.service;
 import com.sp.sr.model.domain.knowledge.Knowledge;
 import com.sp.sr.model.enums.ResultStatus;
 import com.sp.sr.model.repository.knowledge.KnowledgeRepository;
-import com.sp.sr.model.service.KnowledgeService;
+import com.sp.sr.model.service.knowledge.KnowledgeService;
 import com.sp.sr.web.SrWebException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -39,7 +39,7 @@ public class KnowledgeServiceImpl implements KnowledgeService {
 
     @Override
     public Page<Knowledge> findAllByTopicIdAndLevel(Pageable pageable, Integer level, Long topicId) {
-        return knowledgeRepository.findAllByTopicIdAndLevelAndDeleteAtIsNullOrderByCreateAtDesc(pageable,topicId,level);
+        return knowledgeRepository.findAllByTopicIdAndLevelAndDeleteAtIsNullOrderByCreateAtDesc(pageable, topicId, level);
     }
 
     @Override
@@ -51,4 +51,10 @@ public class KnowledgeServiceImpl implements KnowledgeService {
     public List<Knowledge> findAllByLevel(Integer level) {
         return knowledgeRepository.findAllByLevelAndDeleteAtIsNullOrderBySortAsc(level);
     }
+
+    @Override
+    public Page<Knowledge> findAllByNameAndLevel(String name, Integer level, Pageable pageable) {
+        return knowledgeRepository.findAllByLevelAndDeleteAtIsNullAndNameContains(level, name, pageable);
+    }
+
 }

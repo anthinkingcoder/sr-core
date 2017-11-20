@@ -6,7 +6,7 @@ import com.sp.sr.model.domain.knowledge.Knowledge;
 import com.sp.sr.model.dto.ExampleDTO;
 import com.sp.sr.model.enums.ResultStatus;
 import com.sp.sr.model.service.example.ExampleService;
-import com.sp.sr.model.service.KnowledgeService;
+import com.sp.sr.model.service.knowledge.KnowledgeService;
 import com.sp.sr.model.vo.ResultVO;
 import com.sp.sr.model.domain.example.Example;
 import org.springframework.beans.factory.annotation.Autowired;

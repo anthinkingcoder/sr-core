@@ -1,6 +1,7 @@
 package com.sp.sr.model.repository.resource;
 
 
+import com.sp.sr.model.domain.knowledge.ExpandKnowledge;
 import com.sp.sr.model.domain.resource.Resource;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -18,5 +19,7 @@ public interface ResourceRepository extends JpaRepository<Resource, Long> {
 
     Resource findByIdAndDeleteAtIsNull(Long id);
 
+
+    Page<Resource> findAllByDeleteAtIsNullAndNameContains(String name, Pageable pageable);
 
 }

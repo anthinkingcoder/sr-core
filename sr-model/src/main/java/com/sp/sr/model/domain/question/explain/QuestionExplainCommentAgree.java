@@ -12,4 +12,5 @@ import javax.persistence.Table;
 public class QuestionExplainCommentAgree extends BaseEntity {
     private Long commentId;
     private Long userId;
+    private Integer agree;
 }

@@ -3,7 +3,7 @@ package com.sp.sr.admin.user.service;
 import com.sp.sr.admin.common.SrAdminException;
 import com.sp.sr.model.domain.user.User;
 import com.sp.sr.model.service.user.AuthorizationService;
-import com.sp.sr.model.service.UserService;
+import com.sp.sr.model.service.user.UserService;
 import com.sp.sr.model.util.Hashes;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

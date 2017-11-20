@@ -2,7 +2,7 @@ package com.sp.sr.admin.knowledge.service;
 
 import com.sp.sr.admin.common.Auths;
 import com.sp.sr.model.repository.knowledge.ExpandKnowledgeRepository;
-import com.sp.sr.model.service.ExpandKnowledgeService;
+import com.sp.sr.model.service.knowledge.ExpandKnowledgeService;
 import com.sp.sr.model.domain.knowledge.ExpandKnowledge;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -39,4 +39,11 @@ public class ExpandKnowledgeServiceImpl implements ExpandKnowledgeService {
     public ExpandKnowledge save(ExpandKnowledge expandKnowledge) {
         return repository.save(expandKnowledge);
     }
+
+    @Override
+    public Page<ExpandKnowledge> findAllByName(String title, Pageable pageable) {
+        return null;
+    }
+
+
 }

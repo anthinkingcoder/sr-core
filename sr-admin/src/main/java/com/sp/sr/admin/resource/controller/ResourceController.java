@@ -5,7 +5,7 @@ import com.sp.sr.model.controller.BaseController;
 import com.sp.sr.model.domain.resource.Resource;
 import com.sp.sr.model.enums.ResourceCategoryEnum;
 import com.sp.sr.model.enums.ResultStatus;
-import com.sp.sr.model.service.ResourceService;
+import com.sp.sr.model.service.resource.ResourceService;
 import com.sp.sr.model.vo.ResultVO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;

@@ -4,7 +4,7 @@ import com.sp.sr.admin.common.SrAdminException;
 import com.sp.sr.model.domain.user.User;
 import com.sp.sr.model.enums.ResultStatus;
 import com.sp.sr.model.enums.RoleCategoryEnum;
-import com.sp.sr.model.service.UserService;
+import com.sp.sr.model.service.user.UserService;
 import com.sp.sr.model.util.Hashes;
 import com.sp.sr.model.vo.ResultVO;
 import com.sp.sr.model.vo.TeacherVO;

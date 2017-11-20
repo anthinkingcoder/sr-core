@@ -1,6 +1,7 @@
 package com.sp.sr.model.repository.knowledge;
 
 import com.sp.sr.model.domain.knowledge.ExpandKnowledge;
+import com.sp.sr.model.domain.knowledge.Knowledge;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
@@ -15,5 +16,7 @@ public interface ExpandKnowledgeRepository extends JpaRepository<ExpandKnowledge
     Page<ExpandKnowledge> findAllByDeleteAtIsNullOrderByCreateAtAsc(Pageable pageable);
 
     Page<ExpandKnowledge> findAllByDeleteAtIsNullAndUploaderIdOrderByCreateAtAsc(Pageable pageable, Long UploaderId);
+
+    Page<ExpandKnowledge> findAllByDeleteAtIsNullAndNameContains(String name, Pageable pageable);
 
 }

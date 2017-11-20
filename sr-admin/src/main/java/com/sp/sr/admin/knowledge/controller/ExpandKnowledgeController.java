@@ -3,7 +3,7 @@ package com.sp.sr.admin.knowledge.controller;
 import com.sp.sr.admin.common.Auths;
 import com.sp.sr.admin.common.SrAdminException;
 import com.sp.sr.model.controller.BaseController;
-import com.sp.sr.model.service.ExpandKnowledgeService;
+import com.sp.sr.model.service.knowledge.ExpandKnowledgeService;
 import com.sp.sr.model.vo.ResultVO;
 import com.sp.sr.model.domain.knowledge.ExpandKnowledge;
 import com.sp.sr.model.enums.ResultStatus;

@@ -1,7 +1,7 @@
 package com.sp.sr.admin.user.service;
 
 import com.sp.sr.model.repository.user.UserRepository;
-import com.sp.sr.model.service.UserService;
+import com.sp.sr.model.service.user.UserService;
 import com.sp.sr.model.domain.user.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;

@@ -2,7 +2,7 @@ package com.sp.sr.admin.knowledge.service;
 
 import com.sp.sr.admin.common.Auths;
 import com.sp.sr.model.repository.knowledge.KnowledgeRepository;
-import com.sp.sr.model.service.KnowledgeService;
+import com.sp.sr.model.service.knowledge.KnowledgeService;
 import com.sp.sr.model.controller.BaseController;
 import com.sp.sr.model.domain.knowledge.Knowledge;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -71,5 +71,10 @@ public class KnowledgeServiceImpl implements KnowledgeService {
             return repository.findAllByLevelAndDeleteAtIsNullOrderBySortAsc(level);
         }
         return repository.findAllByLevelAndUploaderIdAndDeleteAtIsNull(level, BaseController.USER.get().getId());
+    }
+
+    @Override
+    public Page<Knowledge> findAllByNameAndLevel(String name, Integer level, Pageable pageable) {
+        return null;
     }
 }

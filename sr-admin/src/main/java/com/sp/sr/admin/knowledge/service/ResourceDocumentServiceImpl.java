@@ -3,7 +3,7 @@ package com.sp.sr.admin.knowledge.service;
 import com.sp.sr.admin.common.Auths;
 import com.sp.sr.model.domain.knowledge.ResourceDocument;
 import com.sp.sr.model.repository.knowledge.ResourceDocumentRepository;
-import com.sp.sr.model.service.ResourceDocumentService;
+import com.sp.sr.model.service.knowledge.ResourceDocumentService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;

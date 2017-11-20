@@ -4,7 +4,7 @@ import com.sp.sr.model.controller.BaseController;
 import com.sp.sr.model.domain.example.Example;
 import com.sp.sr.model.dto.ExampleDTO;
 import com.sp.sr.model.service.example.ExampleService;
-import com.sp.sr.model.service.KnowledgeService;
+import com.sp.sr.model.service.knowledge.KnowledgeService;
 import com.sp.sr.model.vo.ResultVO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;

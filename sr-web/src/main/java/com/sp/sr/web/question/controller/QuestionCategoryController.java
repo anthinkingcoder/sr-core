@@ -4,8 +4,8 @@ import com.sp.sr.model.controller.BaseController;
 import com.sp.sr.model.domain.test.QuestionRecord;
 import com.sp.sr.model.domain.question.QuestionCategory;
 import com.sp.sr.model.dto.QuestionCategoryTreeDTO;
-import com.sp.sr.model.service.QuestionCategoryService;
-import com.sp.sr.model.service.QuestionRecordService;
+import com.sp.sr.model.service.question.QuestionCategoryService;
+import com.sp.sr.model.service.test.QuestionRecordService;
 import com.sp.sr.model.vo.QuestionCategoryTreeVO;
 import com.sp.sr.model.vo.QuestionCategoryVO;
 import com.sp.sr.model.vo.ResultVO;
@@ -55,7 +55,7 @@ public class QuestionCategoryController {
 
                     questionCategoryVOChild.setAlreadyDoneQuestionNum(0);
                     for (QuestionRecord questionRecord : questionRecords) {
-                        if (Objects.equals(questionRecord.getId(), child.getQuestion().getId())) {
+                        if (Objects.equals(questionRecord.getQuestionCategoryId(), child.getQuestion().getId())) {
                             questionCategoryVOChild.setAlreadyDoneQuestionNum(questionRecord.getPath() == null ? 0 : questionRecord.getPath().split(",").length);
                             break;
                         }

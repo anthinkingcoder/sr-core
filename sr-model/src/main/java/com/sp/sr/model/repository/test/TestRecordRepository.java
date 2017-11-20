@@ -6,7 +6,7 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 public interface TestRecordRepository extends JpaRepository<TestRecord,Long>{
-    Page<TestRecord> findAllByDeleteAtIsNullOrderByIdDesc(Pageable pageable);
-    Page<TestRecord> findAllByStatusAndDeleteAtIsNullOrderByEndTimeDesc(Pageable pageable, Integer status);
+    Page<TestRecord> findAllByDeleteAtIsNullAndStudentIdOrderByIdDesc(Pageable pageable,Long studentId);
+    Page<TestRecord> findAllByStatusAndDeleteAtIsNullAndStudentIdOrderByEndTimeDesc(Pageable pageable, Integer status,Long studentId);
 
 }

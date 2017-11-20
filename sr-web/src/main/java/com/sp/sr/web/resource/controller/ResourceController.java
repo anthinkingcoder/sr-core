@@ -5,7 +5,7 @@ import com.sp.sr.admin.common.SrAdminException;
 import com.sp.sr.model.controller.BaseController;
 import com.sp.sr.model.domain.resource.Resource;
 import com.sp.sr.model.enums.ResultStatus;
-import com.sp.sr.model.service.ResourceService;
+import com.sp.sr.model.service.resource.ResourceService;
 import com.sp.sr.model.vo.ResultVO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -41,5 +41,13 @@ public class ResourceController extends BaseController {
         }
         Auths.verityUploader(USER.get(), resource.getUploaderId());
         return ResultVO.ok(resource);
+    }
+
+
+    @GetMapping(path = "/search")
+    public ResultVO<Page<Resource>> search(@RequestParam String search,
+                                           @RequestParam(name = "page", defaultValue = "0") Integer page,
+                                           @RequestParam(value = "size", defaultValue = "10") Integer size) {
+        return ResultVO.ok(resourceService.findAllByName(search, new PageRequest(page, size)));
     }
 }

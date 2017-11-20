@@ -3,8 +3,8 @@ package com.sp.sr.admin.knowledge.controller;
 import com.sp.sr.admin.common.Auths;
 import com.sp.sr.admin.common.SrAdminException;
 import com.sp.sr.model.controller.BaseController;
-import com.sp.sr.model.service.KnowledgeService;
-import com.sp.sr.model.service.ResourceDocumentService;
+import com.sp.sr.model.service.knowledge.KnowledgeService;
+import com.sp.sr.model.service.knowledge.ResourceDocumentService;
 import com.sp.sr.model.vo.ResultVO;
 import com.sp.sr.model.domain.knowledge.Knowledge;
 import com.sp.sr.model.domain.knowledge.ResourceDocument;
@@ -28,6 +28,7 @@ public class KnowledgeController extends BaseController {
 
     @Autowired
     private ResourceDocumentService resourceDocumentService;
+
 
 
     @RequestMapping("/list")

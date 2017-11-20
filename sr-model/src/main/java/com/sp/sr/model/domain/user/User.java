@@ -28,5 +28,5 @@ public class User extends BaseEntity implements Serializable{
     private Integer level;
     @JsonIgnore
     private Integer status;
-
+    private String headImg;
 }

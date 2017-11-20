@@ -7,9 +7,10 @@ import javax.persistence.Entity;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "core_question_explain_comment_agree")
+@Table(name = "core_question_explain_agree")
 @Data
 public class QuestionExplainAgree extends BaseEntity {
     private Long questionExplainId;
     private Long userId;
+    private Integer agree;
 }

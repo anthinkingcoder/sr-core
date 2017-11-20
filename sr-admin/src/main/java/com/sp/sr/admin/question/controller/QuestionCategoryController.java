@@ -3,7 +3,7 @@ import com.sp.sr.admin.common.SrAdminException;
 import com.sp.sr.model.domain.question.QuestionCategory;
 import com.sp.sr.model.dto.QuestionCategoryTreeDTO;
 import com.sp.sr.model.enums.ResultStatus;
-import com.sp.sr.model.service.QuestionCategoryService;
+import com.sp.sr.model.service.question.QuestionCategoryService;
 import com.sp.sr.model.vo.ResultVO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;

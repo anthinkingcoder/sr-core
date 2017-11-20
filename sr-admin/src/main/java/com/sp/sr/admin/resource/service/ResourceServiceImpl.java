@@ -2,7 +2,7 @@ package com.sp.sr.admin.resource.service;
 
 import com.sp.sr.admin.common.Auths;
 import com.sp.sr.model.repository.resource.ResourceRepository;
-import com.sp.sr.model.service.ResourceService;
+import com.sp.sr.model.service.resource.ResourceService;
 import com.sp.sr.model.domain.resource.Resource;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -41,5 +41,10 @@ public class ResourceServiceImpl implements ResourceService {
     @Override
     public Page<Resource> findAllByCategory(Pageable pageable, Integer category) {
         return resourceRepository.findAllByDeleteAtIsNullAndCategory(pageable,category);
+    }
+
+    @Override
+    public Page<Resource> findAllByName(String name, Pageable pageable) {
+        return null;
     }
 }

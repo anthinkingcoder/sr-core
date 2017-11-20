@@ -1,5 +1,6 @@
 package com.sp.sr.model.repository.topic;
 
+import com.sp.sr.model.domain.resource.Resource;
 import com.sp.sr.model.domain.topic.Topic;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -15,6 +16,7 @@ public interface TopicRepository extends JpaRepository<Topic, Long> {
 
     Page<Topic> findAllByDeleteAtIsNullAndUploaderId(Pageable pageable, Long uploaderId);
 
+    Page<Topic> findAllByDeleteAtIsNullAndNameContains(String name, Pageable pageable);
 
     Topic findByIdAndDeleteAtIsNull(Long id);
 
@@ -24,4 +26,6 @@ public interface TopicRepository extends JpaRepository<Topic, Long> {
 
 
     List<Topic> findAllByDeleteAtIsNullAndCategoryId(Long categoryId);
+
+
 }

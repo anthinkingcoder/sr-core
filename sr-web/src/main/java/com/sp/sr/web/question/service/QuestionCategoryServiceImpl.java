@@ -4,7 +4,7 @@ import com.sp.sr.model.domain.question.QuestionCategory;
 import com.sp.sr.model.dto.QuestionCategoryTreeDTO;
 import com.sp.sr.model.repository.question.QuestionCategoryRepository;
 import com.sp.sr.model.repository.question.QuestionRepository;
-import com.sp.sr.model.service.QuestionCategoryService;
+import com.sp.sr.model.service.question.QuestionCategoryService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
