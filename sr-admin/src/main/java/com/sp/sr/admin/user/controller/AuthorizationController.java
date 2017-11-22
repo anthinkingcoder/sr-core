@@ -1,5 +1,8 @@
 package com.sp.sr.admin.user.controller;
 
+import com.google.code.kaptcha.Constants;
+import com.sp.sr.admin.common.SrAdminException;
+import com.sp.sr.model.enums.ResultStatus;
 import com.sp.sr.model.service.user.AuthorizationService;
 import com.sp.sr.model.vo.ResultVO;
 import com.sp.sr.model.domain.user.User;
@@ -12,6 +15,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Objects;
 
 /**
  * @author zhoulin
@@ -24,9 +28,19 @@ public class AuthorizationController {
 
     @RequestMapping("/login")
     @PostMapping
-    public ResultVO<Object> login(String username, String password, HttpServletRequest request) {
+    public ResultVO<Object> login(String username,
+                                  String password,
+                                  String captcha,
+                                  HttpServletRequest request) {
         User user = authorizationService.authorize(username, password);
         HttpSession session = request.getSession();
+        String kcaptcha = (String) session.getAttribute(Constants.KAPTCHA_SESSION_KEY);
+        if (!Objects.equals(captcha,kcaptcha)) {
+            throw new SrAdminException(ResultStatus.CAPTCHA_ERROR);
+        }
+        if (user.getStatus() == 1) {
+            throw new SrAdminException(ResultStatus.ACCOUNT_ERROR);
+        }
         session.setAttribute("adminUser", user);
         Map<String, Object> args = new HashMap<>(15);
         args.put("name", user.getName());

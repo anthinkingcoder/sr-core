@@ -18,5 +18,6 @@ public class StudentWork extends BaseEntity {
     private String content;
     private Integer category;
     private Long uploaderId;
+    private String coverUrl;
 
 }

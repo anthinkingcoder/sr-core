@@ -30,7 +30,8 @@ public class AuthorizationAspect {
     private UserService userService;
 
     @Pointcut("execution(public * com.sp.sr.admin.*.controller.*.*(..))" +
-            "&& !execution(public * com.sp.sr.admin.user.controller.AuthorizationController.*(..))")
+            "&& !execution(public * com.sp.sr.admin.user.controller.AuthorizationController.*(..))" +
+            "&& !execution(public * com.sp.sr.admin.common.controller.CaptchaController.*(..))")
     public void verity() {
 
     }
@@ -46,7 +47,8 @@ public class AuthorizationAspect {
             "&& !execution(public * com.sp.sr.admin.user.controller.AuthorizationController.*(..)) " +
             "&& !execution(public * com.sp.sr.admin.user.controller.TeacherController.*(..))" +
             "&& !execution(public * com.sp.sr.admin.topic.controller.TopicCategoryController.*(..))" +
-            "&& !execution(public * com.sp.sr.admin.question.controller.QuestionCategoryController.*(..))")
+            "&& !execution(public * com.sp.sr.admin.question.controller.QuestionCategoryController.*(..))" +
+            "&& !execution(public * com.sp.sr.admin.common.controller.CaptchaController.*(..))")
     public void admin() {
 
     }
@@ -54,19 +56,17 @@ public class AuthorizationAspect {
 
     @Before("verity()")
     public void doVerity() {
-        log.info("doVerity");
         ServletRequestAttributes attributes = (ServletRequestAttributes) RequestContextHolder.getRequestAttributes();
         HttpServletRequest request = attributes.getRequest();
         HttpSession session = request.getSession();
         User user = (User) session.getAttribute("adminUser");
-        if (user == null) {
+        if (user == null || user.getStatus() == 1) {
+            log.info("AUTHORIZE_ERROR");
             throw new SrAdminException(ResultStatus.AUTHORIZE_ERROR);
         }
-
         user = userService.findUserByUsername(user.getUsername());
         session.setAttribute("adminUser", user);
         BaseController.USER.set((User) session.getAttribute("adminUser"));
-
     }
 
     @Before("system()")

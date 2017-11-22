@@ -15,3 +15,7 @@ spring:
     database: 1
   session:
     store-type: redis
+
+
+
+

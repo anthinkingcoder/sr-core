@@ -46,9 +46,11 @@ public class AuthorizationAspect {
         HttpSession session = request.getSession();
         User user = (User) session.getAttribute("user");
         if (user == null) {
+            log.info("not login");
             throw new SrWebException(ResultStatus.AUTHORIZE_ERROR);
         }
         if (!Objects.equals(user.getLevel(), RoleCategoryEnum.STUDENT.getState())) {
+            log.info("not student");
             throw new SrWebException(ResultStatus.AUTHORIZE_ERROR);
         }
         user = userService.findUserByUsername(user.getUsername());

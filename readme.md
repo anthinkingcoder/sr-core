@@ -62,4 +62,69 @@ JpaRepository<Table,id> -> JpaRepository<ExpandKnowledge,Long>
 
 
 
+//数据库
+所有表的表名前缀都是 core_
+core_user //用户表 -> 用户名和密码 level 区分他是系统 教师 学生 1 2 3
+//登录过程中 根据level判断用户身份  -> 系统 教师 学生
+
+管理端:只能系统和教师登录的 sr-admin
+学生端: 学生登录 sr-student
+
+
+
+//父亲与儿子
+
+
+
+知识列表 组件 1
+
+专题 组件  2
+
+
+1 没有父亲的时候 基础知识
+2 -> 1
+1进阶知识
+
+四个项目
+1. sr-admin 管理端的后端
+2. sr-web 学生端的后端
+
+sr-vue 学生端的前端
+src-web 管理端的前端
+
+
+
+前端 -> 后端
+前端 发送 request
+后端 接受 request ,并且处理 然后返回一个response
+request里面包含 路径 + 请求参数
+response里面包含 数据
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 

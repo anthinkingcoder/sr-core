@@ -21,7 +21,7 @@ import org.springframework.web.bind.annotation.*;
 @RestController
 @RequestMapping("/api/expand_knowledge")
 @Slf4j
-public class ExpandKnowledgeController extends BaseController {
+public class  ExpandKnowledgeController extends BaseController {
     @Autowired
     private ExpandKnowledgeService expandKnowledgeService;
 

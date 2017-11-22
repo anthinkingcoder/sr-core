@@ -37,7 +37,8 @@ public class StudentWorkController extends BaseController {
             @RequestParam String content,
             @RequestParam String author,
             @RequestParam String summary,
-            @RequestParam Integer category) {
+            @RequestParam Integer category,
+            @RequestParam(required = false) String coverUrl) {
 
         if (!StudentWorkCategoryEnum.exists(category)) {
             throw new SrAdminException(ResultStatus.ARGUMENT_ERROR);
@@ -59,6 +60,7 @@ public class StudentWorkController extends BaseController {
         studentWork.setAuthor(author);
         studentWork.setCategory(category);
         studentWork.setSummary(summary);
+        studentWork.setCoverUrl(coverUrl);
         studentWork = studentWorkService.save(studentWork);
         return ResultVO.ok(studentWork);
 

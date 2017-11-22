@@ -26,6 +26,13 @@ public class TopicController {
         return ResultVO.ok(topicService.findAllByCategoryId(categoryId));
     }
 
+    @RequestMapping("/list")
+    @GetMapping
+    public ResultVO<Page<Topic>> list(@RequestParam(name = "page", defaultValue = "0") Integer page,
+                                      @RequestParam(value = "size", defaultValue = "10") Integer size) {
+        return ResultVO.ok(topicService.findAll(new PageRequest(page,size)));
+    }
+
     @RequestMapping("/findOne")
     @GetMapping
     public ResultVO<Topic> findOne(@RequestParam Long topicId) {

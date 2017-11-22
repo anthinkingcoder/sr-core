@@ -14,4 +14,12 @@ spring:
     password: TNgmEswfjwYTaaU0G8pTz9fbFlt5wfxx
     database: 2
   session:
-    store-type: redis
+    store-type: NONE
+
+kaptcha:
+  image:
+    width: 100
+    height: 48
+  textproducer:
+    text: 123456789
+    length: 4

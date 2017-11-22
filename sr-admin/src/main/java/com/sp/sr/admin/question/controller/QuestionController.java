@@ -118,6 +118,7 @@ public class QuestionController {
         if (question == null) {
             throw new SrAdminException(ResultStatus.RESOURCE_NOT_FOUND);
         }
+        Auths.verityUploader(USER.get(), question.getUploaderId());
         question.setDeleteAt(new Date());
         questionService.save(question);
         return ResultVO.ok(question);

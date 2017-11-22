@@ -13,8 +13,9 @@ public enum ResultStatus {
     REPEAT_SAVE(605, "重复操作资源"),
     PERMISSION_ERROR(606, "没有权限"),
     RESOURCE_REPEAT(607,"资源重复增加"),
-
-    QUESTION_NUM_NOT(608,"出题来源,题目数量不够");
+    QUESTION_NUM_NOT(608,"出题来源,题目数量不够"),
+    CAPTCHA_ERROR(609, "验证码错误"),
+    ACCOUNT_ERROR(610, "账号已经停用");
     private Integer code;
     private String message;
 
