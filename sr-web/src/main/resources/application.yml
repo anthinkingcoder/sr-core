@@ -1,5 +1,5 @@
 server:
-  port: 8082
+  port: 8083
 spring:
   datasource:
     driver-class-name: com.mysql.jdbc.Driver
@@ -14,7 +14,7 @@ spring:
     password: TNgmEswfjwYTaaU0G8pTz9fbFlt5wfxx
     database: 1
   session:
-    store-type: redis
+    store-type: none
 
 
 

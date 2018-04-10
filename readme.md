@@ -34,7 +34,7 @@ springmvc controller
 
 //axios ->aspect //检测用户是否登录
 axios -> aspect -> controller -> service -> repository
-
+ajax -> controller -> service -> repository(操作数据库 进行增删改查)
 
 // service  //业务逻辑层
 1.以impl结尾

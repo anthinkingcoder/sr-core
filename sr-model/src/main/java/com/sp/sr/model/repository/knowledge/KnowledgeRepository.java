@@ -31,6 +31,8 @@ public interface KnowledgeRepository extends JpaRepository<Knowledge, Long> {
 
     List<Knowledge> findAllByLevelAndUploaderIdAndDeleteAtIsNull(Integer level, Long uploaderId);
 
+
+
     Page<Knowledge> findAllByLevelAndDeleteAtIsNullAndNameContains(Integer level, String name,Pageable pageable);
 
 
